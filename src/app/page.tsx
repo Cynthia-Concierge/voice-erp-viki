@@ -58,38 +58,21 @@ export default function Home() {
     <main className="min-h-screen bg-[#0039D7]">
       {/* ─── NAVIGATION ─── */}
       <nav className="px-5 md:px-10 py-4 flex items-center justify-between">
-        <Image
-          src="/voiceerp-logo.svg"
-          alt="VoiceERP"
-          width={118}
-          height={45}
-          priority
-        />
-        <div className="flex items-center gap-5 md:gap-7 text-white text-xs md:text-sm font-semibold tracking-wider">
-          <a
-            href="#"
-            className="hidden sm:block hover:opacity-80 transition-opacity"
-          >
-            LOGIN
-          </a>
-          <a
-            href="#"
-            className="hidden sm:block hover:opacity-80 transition-opacity"
-          >
-            GET STARTED
-          </a>
-          <button className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <span className="text-xs md:text-sm">MENU</span>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path
-                d="M3 5h12M3 9h12M3 13h12"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
+        <div className="pl-4 md:pl-8">
+          <Image
+            src="/voiceerp-logo.svg"
+            alt="VoiceERP"
+            width={90}
+            height={34}
+            priority
+          />
         </div>
+        <a
+          href="#"
+          className="font-[family-name:var(--font-dm-mono)] font-light text-white text-sm tracking-wider hover:opacity-80 transition-opacity"
+        >
+          GET STARTED
+        </a>
       </nav>
 
       {/* ─── HERO SECTION ─── */}
