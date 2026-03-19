@@ -6,42 +6,42 @@ const faqs = [
   {
     question: "What is voiceERP, exactly?",
     answer:
-      "VoiceERP is the world's first voice-activated AI dispatcher built specifically for Amazon DSPs. Our AI assistant, Viki, handles scheduling, driver management, rescues, Netradyne coaching, and more — all through simple voice commands or automated workflows.",
+      "voiceERP is the real-time system behind Viki — a fully autonomous, voice-activated AI dispatcher that manages scheduling, coaching, compliance, and payroll. No manual inputs. No dashboards. Just results.",
   },
   {
     question: "Do I have to talk to Viki?",
     answer:
-      "Not at all! While Viki supports voice commands, you can also interact through text, dashboards, and automated workflows. Viki adapts to however you prefer to work.",
+      "Nope. Viki listens to your systems, not your voice. She reacts to data, not dialogue. You don't train her. She's already trained.",
   },
   {
     question: "How hard is it to set up?",
     answer:
-      "Setup is simple and takes less than a day. Our team handles the heavy lifting — we integrate with your existing systems and customize Viki to match your operation's specific needs.",
+      "It's not. We install and configure voiceERP for you — usually in under 6 hours. You'll be up and running before your next shift starts.",
   },
   {
     question: "Will it work with our current systems?",
     answer:
-      "Yes! Viki integrates seamlessly with the tools you already use — Amazon Relay, Netradyne, your payroll system, and more. No need to rip and replace anything.",
+      "Yes. voiceERP is designed to integrate with the tools DSPs already use (like Netradyne, payroll, and scheduling). It can replace or plug into what's already there.",
   },
   {
     question: "Can it really handle bonuses and payroll?",
     answer:
-      "Absolutely. Viki tracks driver performance, calculates bonuses based on your custom rules, and integrates with your payroll provider to streamline the entire process.",
+      "Yes. Viki tracks performance, calculates incentives, and uploads bonuses to your payroll system. No more spreadsheets. No more late uploads.",
   },
   {
     question: "What happens if something goes wrong?",
     answer:
-      "You're never alone. Our support team is available around the clock, and Viki is designed to escalate critical issues to you immediately. Plus, you always have full override control.",
+      "You don't panic — because Viki's already correcting it. She's built with live alerting, fallback logic, and proactive fail-safes. And yes, you'll still have full visibility.",
   },
   {
     question: "How much time do I need to spend with Viki each week?",
     answer:
-      "Most DSP owners spend less than 2 hours per week reviewing Viki's reports and approving recommendations. Viki handles the day-to-day so you can focus on growing your business.",
+      "It varies from customer to customer, and how many features they deploy. But on average, we've seen two dedicated hours per week.",
   },
   {
     question: "What happens after the 60-day trial?",
     answer:
-      "After your trial, you can continue with a flexible monthly plan at a discounted per-driver rate. No long-term contracts required. If you enrolled through the AI Partnership, your discounted rate and free upgrades are locked in for life.",
+      "You keep your weekends. If you choose to continue, we'll transition you into a full plan without downtime. If not, there are no strings attached.",
   },
 ];
 
