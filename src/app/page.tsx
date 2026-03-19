@@ -46,92 +46,7 @@ function WaveDividerReverse() {
   );
 }
 
-/* ─── Dashboard Mockup ─── */
-function DashboardMockup() {
-  const drivers = [
-    { dot: "bg-green-500", name: "Alex M.", bar: "bg-green-400", w: "75%" },
-    { dot: "bg-green-500", name: "Sarah K.", bar: "bg-green-400", w: "85%" },
-    { dot: "bg-yellow-400", name: "Mike R.", bar: "bg-yellow-400", w: "55%" },
-    { dot: "bg-green-500", name: "Lisa P.", bar: "bg-green-400", w: "80%" },
-    { dot: "bg-red-500", name: "John D.", bar: "bg-red-400", w: "35%" },
-  ];
-
-  return (
-    <div className="bg-white rounded-2xl shadow-2xl p-5 w-full max-w-sm">
-      {/* Header */}
-      <div className="flex items-start justify-between mb-1">
-        <div className="flex items-center gap-1.5">
-          <div className="w-5 h-5 bg-[#2046E8] rounded flex items-center justify-center">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path
-                d="M2 8V4l2 2.5L6 4v4M8 6h3M8 4h3M8 8h3"
-                stroke="white"
-                strokeWidth="0.8"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-          <span className="text-[10px] font-bold text-gray-800 tracking-tight">
-            voiceERP
-          </span>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg">
-            <span className="text-white text-2xl font-bold">92</span>
-          </div>
-          <span className="text-[9px] text-green-600 font-bold mt-1 tracking-wider">
-            FANTASTIC PLUS
-          </span>
-        </div>
-      </div>
-
-      {/* Driver Roster */}
-      <h3 className="text-sm font-bold text-gray-800 mb-3 mt-2">
-        Driver Roster
-      </h3>
-      <div className="space-y-2.5">
-        {drivers.map((d, i) => (
-          <div key={i} className="flex items-center gap-2.5">
-            <div
-              className={`w-2.5 h-2.5 rounded-full ${d.dot} flex-shrink-0`}
-            />
-            <span className="text-[11px] text-gray-600 w-14 flex-shrink-0">
-              {d.name}
-            </span>
-            <div className="flex-1 bg-gray-100 rounded-full h-2.5 overflow-hidden">
-              <div
-                className={`${d.bar} h-full rounded-full`}
-                style={{ width: d.w }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Route Metrics */}
-      <div className="mt-4 grid grid-cols-2 gap-2">
-        <div className="bg-blue-50 rounded-lg p-2.5">
-          <span className="text-[10px] text-gray-500 font-medium">Routes</span>
-          <div className="flex gap-1 mt-1.5">
-            <div className="w-4 h-4 bg-green-500 rounded" />
-            <div className="w-4 h-4 bg-green-500 rounded" />
-            <div className="w-4 h-4 bg-yellow-400 rounded" />
-            <div className="w-4 h-4 bg-green-500 rounded" />
-          </div>
-        </div>
-        <div className="bg-blue-50 rounded-lg p-2.5">
-          <span className="text-[10px] text-gray-500 font-medium">Status</span>
-          <div className="flex gap-1 mt-1.5">
-            <div className="w-4 h-4 bg-green-500 rounded" />
-            <div className="w-4 h-4 bg-green-500 rounded" />
-            <div className="w-4 h-4 bg-green-500 rounded" />
-            <div className="w-4 h-4 bg-red-400 rounded" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+/* ─── (Dashboard mockup replaced by real image) ─── */
 
 /* ─── Stat Card ─── */
 function StatCard({ value, label }: { value: string; label: string }) {
@@ -160,17 +75,17 @@ function StatCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-/* ─── Green Checkmark ─── */
+/* ─── Blue Checkmark ─── */
 function Check() {
   return (
     <svg
-      width="22"
-      height="22"
+      width="18"
+      height="18"
       viewBox="0 0 22 22"
       fill="none"
       className="flex-shrink-0 mt-0.5"
     >
-      <circle cx="11" cy="11" r="11" fill="#22c55e" />
+      <circle cx="11" cy="11" r="11" fill="#AFE2FF" />
       <path
         d="M6.5 11.5l3 3 6-6"
         stroke="white"
@@ -291,7 +206,7 @@ export default function Home() {
 
           <a
             href="#"
-            className="inline-block bg-white text-gray-900 font-semibold text-[16px] px-8 py-3 rounded-full hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-md hover:bg-gray-100 transition-colors"
           >
             Join Viki&apos;s AI Partnership
           </a>
@@ -311,7 +226,7 @@ export default function Home() {
 
           <div className="flex flex-col md:flex-row items-start gap-10 md:gap-16">
             {/* Feature List */}
-            <div className="flex-1 space-y-5">
+            <div className="flex-1 space-y-4">
               {[
                 "Calls and books drivers",
                 "Coordinates rescues",
@@ -322,16 +237,22 @@ export default function Home() {
               ].map((feature, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <Check />
-                  <span className="text-[16px] md:text-[18px] leading-[27px] text-white/90">
+                  <span className="text-[14px] leading-[20px] text-white">
                     {feature}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* Dashboard Mockup */}
+            {/* Dashboard Screenshot */}
             <div className="flex-1 flex justify-center">
-              <DashboardMockup />
+              <Image
+                src="/dashboard-mockup.webp"
+                alt="VoiceERP Driver Roster Dashboard"
+                width={500}
+                height={600}
+                className="w-full max-w-md rounded-2xl shadow-2xl"
+              />
             </div>
           </div>
         </div>
@@ -363,13 +284,13 @@ export default function Home() {
           <div className="flex flex-col items-center gap-4">
             <a
               href="#"
-              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-8 py-3 rounded-full hover:bg-white hover:text-[#2046E8] transition-colors"
+              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-md hover:bg-gray-100 transition-colors"
             >
               Switch now and earn a $1,000 Bonus
             </a>
             <a
               href="#"
-              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-8 py-3 rounded-full hover:bg-white hover:text-[#2046E8] transition-colors"
+              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-md hover:bg-gray-100 transition-colors"
             >
               Start your 60-day free trial
             </a>
@@ -404,13 +325,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#"
-              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-7 py-3 rounded-full hover:bg-white hover:text-[#2046E8] transition-colors"
+              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-7 py-3 rounded-md hover:bg-gray-100 transition-colors"
             >
               Start your 60-day free trial
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-2 border-2 border-white text-white font-semibold text-[16px] px-7 py-3 rounded-full hover:bg-white hover:text-[#2046E8] transition-colors"
+              className="inline-flex items-center gap-2 border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-7 py-3 rounded-md hover:bg-gray-100 transition-colors"
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path
