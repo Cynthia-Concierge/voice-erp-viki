@@ -38,7 +38,7 @@ function Check() {
       fill="none"
       className="flex-shrink-0 mt-0.5"
     >
-      <circle cx="11" cy="11" r="11" fill="#AFE2FF" />
+      <circle cx="11" cy="11" r="11" fill="#1C77FF" />
       <path
         d="M6.5 11.5l3 3 6-6"
         stroke="white"
@@ -122,7 +122,7 @@ export default function Home() {
             VOICE-ACTIVATED AI DISPATCHER
           </h2>
 
-          <div className="flex flex-col md:flex-row items-start gap-10 md:gap-16">
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
             {/* Feature List */}
             <div className="flex-1 space-y-4">
               {[
