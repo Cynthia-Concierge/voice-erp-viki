@@ -102,51 +102,16 @@ export default function Home() {
             WHY ARE YOU STILL WAITING?
           </p>
 
-          {/* Hero Image — Neighborhood background with Viki avatar */}
-          <div className="max-w-2xl mx-auto mb-10 relative">
-            {/* Background scene container */}
-            <div className="relative w-full overflow-hidden bg-gradient-to-b from-[#87CEEB] via-[#a8d8ea] to-[#6db86b]">
-              {/* Sky + neighborhood scene (painted with gradients) */}
-              <div className="aspect-[16/9] md:aspect-[2.2/1] relative">
-                {/* Sky */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#5ba3d9] via-[#7ec8e3] to-transparent" />
-                {/* Clouds */}
-                <div className="absolute top-[10%] left-[5%] w-24 h-8 bg-white/40 rounded-full blur-sm" />
-                <div className="absolute top-[8%] left-[15%] w-16 h-6 bg-white/30 rounded-full blur-sm" />
-                <div className="absolute top-[15%] right-[10%] w-20 h-7 bg-white/35 rounded-full blur-sm" />
-                <div className="absolute top-[12%] right-[25%] w-14 h-5 bg-white/25 rounded-full blur-sm" />
-                {/* Trees */}
-                <div className="absolute bottom-0 left-[3%] w-16 h-[55%] bg-[#2d7a3a] rounded-t-full" />
-                <div className="absolute bottom-0 left-[12%] w-20 h-[60%] bg-[#3a8a47] rounded-t-full" />
-                <div className="absolute bottom-0 left-[22%] w-14 h-[45%] bg-[#4a9a57] rounded-t-full" />
-                <div className="absolute bottom-0 right-[5%] w-18 h-[50%] bg-[#2d7a3a] rounded-t-full" />
-                <div className="absolute bottom-0 right-[15%] w-16 h-[55%] bg-[#3a8a47] rounded-t-full" />
-                {/* Houses */}
-                <div className="absolute bottom-[5%] left-[8%] w-14 h-12 bg-[#e8d5b0] rounded-none">
-                  <div className="absolute -top-4 left-0 w-0 h-0 border-l-[28px] border-r-[28px] border-b-[16px] border-l-transparent border-r-transparent border-b-[#c4956a]" />
-                </div>
-                <div className="absolute bottom-[5%] left-[25%] w-12 h-10 bg-[#d4c4a8] rounded-none">
-                  <div className="absolute -top-3 left-0 w-0 h-0 border-l-[24px] border-r-[24px] border-b-[12px] border-l-transparent border-r-transparent border-b-[#b0876a]" />
-                </div>
-                <div className="absolute bottom-[5%] right-[20%] w-14 h-11 bg-[#e0cdb0] rounded-none">
-                  <div className="absolute -top-4 left-0 w-0 h-0 border-l-[28px] border-r-[28px] border-b-[16px] border-l-transparent border-r-transparent border-b-[#c4956a]" />
-                </div>
-                {/* Ground */}
-                <div className="absolute bottom-0 left-0 right-0 h-[12%] bg-gradient-to-t from-[#5a9e4a] to-[#6db86b]" />
-              </div>
-            </div>
-
-            {/* Viki avatar — overlaid on the scene */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[55%] md:w-[45%] z-10">
-              <Image
-                src="/viki-avatar.webp"
-                alt="Viki - AI Dispatcher"
-                width={600}
-                height={600}
-                className="w-full h-auto drop-shadow-2xl"
-                priority
-              />
-            </div>
+          {/* Hero Image — Pill-shaped neighborhood scene with Viki */}
+          <div className="max-w-3xl mx-auto mb-10">
+            <Image
+              src="/hero-scene.png"
+              alt="Viki - AI Dispatcher in neighborhood"
+              width={800}
+              height={273}
+              className="w-full h-auto"
+              priority
+            />
           </div>
 
           <p className="text-[16px] md:text-[18px] leading-[27px] max-w-xl mx-auto mb-8 text-white">
