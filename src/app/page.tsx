@@ -152,7 +152,7 @@ export default function Home() {
           {/* Hero Image — Neighborhood background with Viki avatar */}
           <div className="max-w-2xl mx-auto mb-10 relative">
             {/* Background scene container with rounded corners */}
-            <div className="relative w-full rounded-[2rem] overflow-hidden bg-gradient-to-b from-[#87CEEB] via-[#a8d8ea] to-[#6db86b]">
+            <div className="relative w-full overflow-hidden bg-gradient-to-b from-[#87CEEB] via-[#a8d8ea] to-[#6db86b]">
               {/* Sky + neighborhood scene (painted with gradients) */}
               <div className="aspect-[16/9] md:aspect-[2.2/1] relative">
                 {/* Sky */}
@@ -169,13 +169,13 @@ export default function Home() {
                 <div className="absolute bottom-0 right-[5%] w-18 h-[50%] bg-[#2d7a3a] rounded-t-full" />
                 <div className="absolute bottom-0 right-[15%] w-16 h-[55%] bg-[#3a8a47] rounded-t-full" />
                 {/* Houses */}
-                <div className="absolute bottom-[5%] left-[8%] w-14 h-12 bg-[#e8d5b0] rounded-t-lg">
+                <div className="absolute bottom-[5%] left-[8%] w-14 h-12 bg-[#e8d5b0] rounded-none">
                   <div className="absolute -top-4 left-0 w-0 h-0 border-l-[28px] border-r-[28px] border-b-[16px] border-l-transparent border-r-transparent border-b-[#c4956a]" />
                 </div>
-                <div className="absolute bottom-[5%] left-[25%] w-12 h-10 bg-[#d4c4a8] rounded-t-lg">
+                <div className="absolute bottom-[5%] left-[25%] w-12 h-10 bg-[#d4c4a8] rounded-none">
                   <div className="absolute -top-3 left-0 w-0 h-0 border-l-[24px] border-r-[24px] border-b-[12px] border-l-transparent border-r-transparent border-b-[#b0876a]" />
                 </div>
-                <div className="absolute bottom-[5%] right-[20%] w-14 h-11 bg-[#e0cdb0] rounded-t-lg">
+                <div className="absolute bottom-[5%] right-[20%] w-14 h-11 bg-[#e0cdb0] rounded-none">
                   <div className="absolute -top-4 left-0 w-0 h-0 border-l-[28px] border-r-[28px] border-b-[16px] border-l-transparent border-r-transparent border-b-[#c4956a]" />
                 </div>
                 {/* Ground */}
@@ -206,7 +206,7 @@ export default function Home() {
 
           <a
             href="#"
-            className="inline-block bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-md hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-none hover:bg-gray-100 transition-colors"
           >
             Join Viki&apos;s AI Partnership
           </a>
@@ -251,7 +251,7 @@ export default function Home() {
                 alt="VoiceERP Driver Roster Dashboard"
                 width={500}
                 height={600}
-                className="w-full max-w-md rounded-2xl shadow-2xl"
+                className="w-full max-w-md shadow-2xl"
               />
             </div>
           </div>
@@ -284,13 +284,13 @@ export default function Home() {
           <div className="flex flex-col items-center gap-4">
             <a
               href="#"
-              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-md hover:bg-gray-100 transition-colors"
+              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-none hover:bg-gray-100 transition-colors"
             >
               Switch now and earn a $1,000 Bonus
             </a>
             <a
               href="#"
-              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-md hover:bg-gray-100 transition-colors"
+              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-none hover:bg-gray-100 transition-colors"
             >
               Start your 60-day free trial
             </a>
@@ -325,13 +325,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#"
-              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-7 py-3 rounded-md hover:bg-gray-100 transition-colors"
+              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-7 py-3 rounded-none hover:bg-gray-100 transition-colors"
             >
               Start your 60-day free trial
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-2 border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-7 py-3 rounded-md hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center gap-2 border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-7 py-3 rounded-none hover:bg-gray-100 transition-colors"
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path
