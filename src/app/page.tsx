@@ -1,46 +1,14 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import FAQ from "@/components/FAQ";
 import LeadModal from "@/components/LeadModal";
 import Image from "next/image";
 
-/* ─── Scroll animation hook ─── */
-function useScrollReveal() {
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
-  const init = useCallback(() => {
-    if (observerRef.current) return;
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observerRef.current?.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-    );
-    document.querySelectorAll(".animate-on-scroll, .animate-pop-in").forEach((el) => {
-      observerRef.current?.observe(el);
-    });
-  }, []);
-
-  useEffect(() => {
-    // Small delay so DOM is painted before observing
-    const t = setTimeout(init, 100);
-    return () => {
-      clearTimeout(t);
-      observerRef.current?.disconnect();
-    };
-  }, [init]);
-}
-
 /* ─── Stat Card ─── */
-function StatCard({ value, label, stagger }: { value: string; label: string; stagger: number }) {
+function StatCard({ value, label }: { value: string; label: string }) {
   return (
-    <div className={`flex flex-col items-center animate-pop-in stagger-${stagger}`}>
+    <div className="flex flex-col items-center">
       <svg
         width="28"
         height="28"
@@ -93,8 +61,6 @@ export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [showSticky, setShowSticky] = useState(false);
 
-  useScrollReveal();
-
   useEffect(() => {
     function onScroll() {
       setShowSticky(window.scrollY > 600);
@@ -143,17 +109,17 @@ export default function Home() {
       {/* ─── HERO SECTION ─── */}
       <section className="text-white text-center px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-12 sm:pb-16">
         <div className="max-w-3xl mx-auto">
-          <h1 className="animate-on-scroll slide-up font-display text-[32px] sm:text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] sm:leading-[1] md:leading-[58px] mb-3 sm:mb-4 text-white">
+          <h1 className="font-display text-[32px] sm:text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] sm:leading-[1] md:leading-[58px] mb-3 sm:mb-4 text-white">
             20 DSPS JOINED VIKI&apos;S AI PARTNERSHIP IN THE LAST MONTH
           </h1>
-          <p className="animate-on-scroll slide-up stagger-2 font-display text-[14px] sm:text-[16px] md:text-[20px] tracking-[0.15em] mb-6 sm:mb-8 text-[#AFE2FF]">
+          <p className="font-display text-[14px] sm:text-[16px] md:text-[20px] tracking-[0.15em] mb-6 sm:mb-8 text-[#AFE2FF]">
             WHY ARE YOU STILL WAITING?
           </p>
         </div>
 
         {/* Hero Image — full-bleed on mobile, constrained on desktop */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <div className="max-w-5xl mb-8 sm:mb-10 -mx-4 sm:mx-auto animate-on-scroll scale-in stagger-3">
+        <div className="max-w-5xl mb-8 sm:mb-10 -mx-4 sm:mx-auto">
           <img
             src="/hero-scene@2x.png"
             srcSet="/hero-scene.png 800w, /hero-scene@2x.png 1600w"
@@ -165,7 +131,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <p className="animate-on-scroll slide-up text-[15px] sm:text-[16px] md:text-[18px] leading-[25px] sm:leading-[27px] max-w-xl mx-auto mb-6 sm:mb-8 text-white">
+          <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[25px] sm:leading-[27px] max-w-xl mx-auto mb-6 sm:mb-8 text-white">
             Want to put your DSP on autopilot? Then join our new AI Partnership.
             Together, we customize Viki to optimize your Operations across the
             board. Saving you hundreds of thousands of dollars every year. If you
@@ -185,7 +151,7 @@ export default function Home() {
       {/* ─── FEATURES SECTION ─── */}
       <section className="text-white px-4 sm:px-6 pt-10 sm:pt-12 md:pt-20 pb-12 sm:pb-16 md:pb-24">
         <div className="max-w-5xl mx-auto">
-          <h2 className="animate-on-scroll slide-up font-display text-[36px] md:text-[36px] lg:text-[42px] leading-[1.1] sm:leading-[1.05] text-center mb-8 sm:mb-12 md:mb-16 text-white">
+          <h2 className="font-display text-[36px] md:text-[36px] lg:text-[42px] leading-[1.1] sm:leading-[1.05] text-center mb-8 sm:mb-12 md:mb-16 text-white">
             HERE&apos;S WHAT YOU CAN EXPECT FROM THE WORLD&apos;S FIRST
             VOICE-ACTIVATED AI DISPATCHER
           </h2>
@@ -201,7 +167,7 @@ export default function Home() {
                 "Handles scheduling and confirms",
                 "Incident, write-ups, incentives, payroll integration & compliance",
               ].map((feature, i) => (
-                <div key={i} className={`animate-on-scroll slide-left stagger-${i + 1} flex items-start gap-3`}>
+                <div key={i} className="flex items-start gap-3">
                   <Check />
                   <span className="text-[14px] leading-[20px] text-white">
                     {feature}
@@ -211,7 +177,7 @@ export default function Home() {
             </div>
 
             {/* Dashboard Screenshot */}
-            <div className="flex-1 flex justify-center w-full animate-on-scroll slide-right">
+            <div className="flex-1 flex justify-center w-full">
               <Image
                 src="/dashboard-mockup.webp"
                 alt="VoiceERP Driver Roster Dashboard"
@@ -227,21 +193,21 @@ export default function Home() {
       {/* ─── STATS SECTION ─── */}
       <section className="text-white px-4 sm:px-6 py-10 sm:py-12 md:py-20 text-center">
         <div className="max-w-4xl mx-auto bg-[#022EAD] px-5 sm:px-8 md:px-16 py-10 sm:py-14 md:py-20">
-          <h2 className="animate-on-scroll slide-up font-display text-[22px] sm:text-[24px] md:text-[36px] lg:text-[42px] leading-[1.1] sm:leading-[1.05] mb-4 sm:mb-6 text-white">
+          <h2 className="font-display text-[22px] sm:text-[24px] md:text-[36px] lg:text-[42px] leading-[1.1] sm:leading-[1.05] mb-4 sm:mb-6 text-white">
             SAVE TIME. SAVE MONEY.
             <br />
             SAVE YOUR SANITY.
           </h2>
-          <p className="animate-on-scroll slide-up stagger-2 text-[15px] sm:text-[16px] md:text-[18px] leading-[25px] sm:leading-[27px] max-w-lg mx-auto mb-8 sm:mb-12 text-white">
+          <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[25px] sm:leading-[27px] max-w-lg mx-auto mb-8 sm:mb-12 text-white">
             DSPs who&apos;ve partnered with Viki are racking up massive savings
             in time and money across the board. Join them today and start seeing
             the same results flow to your bottomline.
           </p>
 
           <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-14">
-            <StatCard value="60hrs" label="per month on scheduling" stagger={1} />
-            <StatCard value="40hrs" label="per month on admin" stagger={2} />
-            <StatCard value="30%" label="cut in safety infractions" stagger={3} />
+            <StatCard value="60hrs" label="per month on scheduling" />
+            <StatCard value="40hrs" label="per month on admin" />
+            <StatCard value="30%" label="cut in safety infractions" />
           </div>
 
           <div className="flex flex-col items-center gap-4">
@@ -258,19 +224,17 @@ export default function Home() {
       {/* ─── FAQ SECTION ─── */}
       <section className="text-white px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-12 sm:pb-16 md:pb-24">
         <div className="max-w-3xl mx-auto">
-          <h2 className="animate-on-scroll slide-up font-display text-[22px] sm:text-[24px] md:text-[36px] lg:text-[42px] leading-[1.1] sm:leading-[1.05] mb-6 sm:mb-8 md:mb-12 text-white">
+          <h2 className="font-display text-[22px] sm:text-[24px] md:text-[36px] lg:text-[42px] leading-[1.1] sm:leading-[1.05] mb-6 sm:mb-8 md:mb-12 text-white">
             YOUR QUESTIONS ANSWERED
           </h2>
-          <div className="animate-on-scroll slide-up stagger-2">
-            <FAQ />
-          </div>
+          <FAQ />
         </div>
       </section>
 
       {/* ─── FINAL CTA SECTION ─── */}
       <section className="text-white text-center px-4 sm:px-6 pt-10 sm:pt-12 md:pt-20 pb-24 sm:pb-16 md:pb-20">
         <div className="max-w-4xl mx-auto bg-[#022EAD] px-5 sm:px-8 md:px-16 pt-10 sm:pt-14 md:pt-20 pb-0 relative overflow-hidden">
-          <h2 className="animate-on-scroll slide-up font-display text-[22px] sm:text-[24px] md:text-[36px] lg:text-[42px] leading-[1.1] sm:leading-[1.05] mb-8 sm:mb-10 text-white">
+          <h2 className="font-display text-[22px] sm:text-[24px] md:text-[36px] lg:text-[42px] leading-[1.1] sm:leading-[1.05] mb-8 sm:mb-10 text-white">
             YOU&apos;RE ON THE WAY TO KNOCKING DOWN MORE FANTASTIC PLUS WEEKS
             THAN YOU EVER IMAGINED. GET STARTED TODAY!
           </h2>
