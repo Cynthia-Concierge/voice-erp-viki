@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --blue-primary: #2046E8;
-  --blue-dark: #1a3ac0;
+  --blue-primary: #0039D7;
   --background: #ffffff;
   --foreground: #1a1a2e;
 }
@@ -11,7 +10,6 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-blue-primary: var(--blue-primary);
-  --color-blue-dark: var(--blue-dark);
   --font-sans: var(--font-dm-sans);
   --font-display: "acumin-pro-condensed", var(--font-heading-fallback), sans-serif;
 }

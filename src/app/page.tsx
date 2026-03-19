@@ -1,53 +1,6 @@
 import FAQ from "@/components/FAQ";
 import Image from "next/image";
 
-/* ─── Decorative Wave Divider (blue-on-blue texture break) ─── */
-function WaveDivider() {
-  return (
-    <div className="relative w-full overflow-hidden">
-      <svg
-        viewBox="0 0 1440 100"
-        fill="none"
-        preserveAspectRatio="none"
-        className="w-full block h-[50px] md:h-[70px]"
-      >
-        <path
-          d="M0,60 C120,90 240,30 360,55 C480,80 560,25 720,50 C880,75 960,20 1100,55 C1240,90 1340,35 1440,60 L1440,100 L0,100 Z"
-          fill="#1b3cc4"
-        />
-        <path
-          d="M0,0 L1440,0 L1440,60 C1340,35 1240,90 1100,55 C960,20 880,75 720,50 C560,25 480,80 360,55 C240,30 120,90 0,60 Z"
-          fill="#2046E8"
-        />
-      </svg>
-    </div>
-  );
-}
-
-function WaveDividerReverse() {
-  return (
-    <div className="relative w-full overflow-hidden">
-      <svg
-        viewBox="0 0 1440 100"
-        fill="none"
-        preserveAspectRatio="none"
-        className="w-full block h-[50px] md:h-[70px]"
-      >
-        <path
-          d="M0,60 C160,25 280,85 440,50 C600,15 720,80 900,55 C1080,30 1200,75 1440,45 L1440,100 L0,100 Z"
-          fill="#2046E8"
-        />
-        <path
-          d="M0,0 L1440,0 L1440,45 C1200,75 1080,30 900,55 C720,80 600,15 440,50 C280,85 160,25 0,60 Z"
-          fill="#1b3cc4"
-        />
-      </svg>
-    </div>
-  );
-}
-
-/* ─── (Dashboard mockup replaced by real image) ─── */
-
 /* ─── Stat Card ─── */
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
@@ -70,7 +23,7 @@ function StatCard({ value, label }: { value: string; label: string }) {
       <span className="font-display text-[40px] md:text-[52px] leading-[1] text-white tracking-wide">
         {value}
       </span>
-      <span className="text-white/80 text-[14px] mt-2">{label}</span>
+      <span className="text-white text-[14px] mt-2">{label}</span>
     </div>
   );
 }
@@ -102,9 +55,9 @@ function Check() {
    ═══════════════════════════════════════ */
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#2046E8]">
+    <main className="min-h-screen bg-[#0039D7]">
       {/* ─── NAVIGATION ─── */}
-      <nav className="bg-[#2046E8] px-5 md:px-10 py-4 flex items-center justify-between">
+      <nav className="px-5 md:px-10 py-4 flex items-center justify-between">
         <Image
           src="/voiceerp-logo.svg"
           alt="VoiceERP"
@@ -140,9 +93,9 @@ export default function Home() {
       </nav>
 
       {/* ─── HERO SECTION ─── */}
-      <section className="bg-[#2046E8] text-white text-center px-6 pt-10 md:pt-16 pb-16">
+      <section className="text-white text-center px-6 pt-10 md:pt-16 pb-16">
         <div className="max-w-3xl mx-auto">
-          <h1 className="font-display text-[36px] md:text-[52px] lg:text-[64px] leading-[1] md:leading-[58px] mb-4">
+          <h1 className="font-display text-[36px] md:text-[52px] lg:text-[64px] leading-[1] md:leading-[58px] mb-4 text-white">
             20 DSPS JOINED VIKI&apos;S AI PARTNERSHIP IN THE LAST MONTH
           </h1>
           <p className="font-display text-[16px] md:text-[20px] tracking-[0.15em] mb-8 text-[#AFE2FF]">
@@ -151,7 +104,7 @@ export default function Home() {
 
           {/* Hero Image — Neighborhood background with Viki avatar */}
           <div className="max-w-2xl mx-auto mb-10 relative">
-            {/* Background scene container with rounded corners */}
+            {/* Background scene container */}
             <div className="relative w-full overflow-hidden bg-gradient-to-b from-[#87CEEB] via-[#a8d8ea] to-[#6db86b]">
               {/* Sky + neighborhood scene (painted with gradients) */}
               <div className="aspect-[16/9] md:aspect-[2.2/1] relative">
@@ -196,7 +149,7 @@ export default function Home() {
             </div>
           </div>
 
-          <p className="text-[16px] md:text-[18px] leading-[27px] max-w-xl mx-auto mb-8 opacity-90">
+          <p className="text-[16px] md:text-[18px] leading-[27px] max-w-xl mx-auto mb-8 text-white">
             Want to put your DSP on autopilot? Then join our new AI Partnership.
             Together, we customize Viki to optimize your Operations across the
             board. Saving you hundreds of thousands of dollars every year. If you
@@ -206,20 +159,17 @@ export default function Home() {
 
           <a
             href="#"
-            className="inline-block bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-none hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-[#0039D7] font-semibold text-[16px] px-8 py-3 rounded-none hover:bg-gray-100 transition-colors"
           >
             Join Viki&apos;s AI Partnership
           </a>
         </div>
       </section>
 
-      {/* Decorative wave break */}
-      <WaveDivider />
-
       {/* ─── FEATURES SECTION ─── */}
-      <section className="bg-[#1b3cc4] text-white px-6 pt-12 md:pt-20 pb-16 md:pb-24">
+      <section className="text-white px-6 pt-12 md:pt-20 pb-16 md:pb-24">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] text-center mb-12 md:mb-16">
+          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] text-center mb-12 md:mb-16 text-white">
             HERE&apos;S WHAT YOU CAN EXPECT FROM THE WORLD&apos;S FIRST
             VOICE-ACTIVATED AI DISPATCHER
           </h2>
@@ -258,18 +208,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Decorative wave break */}
-      <WaveDividerReverse />
-
       {/* ─── STATS SECTION ─── */}
-      <section className="bg-[#2046E8] text-white px-6 pt-12 md:pt-20 pb-16 md:pb-20 text-center">
+      <section className="text-white px-6 pt-12 md:pt-20 pb-16 md:pb-20 text-center">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-6">
+          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-6 text-white">
             SAVE TIME. SAVE MONEY.
             <br />
             SAVE YOUR SANITY.
           </h2>
-          <p className="text-[16px] md:text-[18px] leading-[27px] max-w-lg mx-auto mb-12 opacity-90">
+          <p className="text-[16px] md:text-[18px] leading-[27px] max-w-lg mx-auto mb-12 text-white">
             DSPs who&apos;ve partnered with Viki are racking up massive savings
             in time and money across the board. Join them today and start seeing
             the same results flow to your bottomline.
@@ -284,13 +231,13 @@ export default function Home() {
           <div className="flex flex-col items-center gap-4">
             <a
               href="#"
-              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-none hover:bg-gray-100 transition-colors"
+              className="inline-block border-2 border-white bg-white text-[#0039D7] font-semibold text-[16px] px-8 py-3 rounded-none hover:bg-gray-100 transition-colors"
             >
               Switch now and earn a $1,000 Bonus
             </a>
             <a
               href="#"
-              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-8 py-3 rounded-none hover:bg-gray-100 transition-colors"
+              className="inline-block border-2 border-white bg-white text-[#0039D7] font-semibold text-[16px] px-8 py-3 rounded-none hover:bg-gray-100 transition-colors"
             >
               Start your 60-day free trial
             </a>
@@ -298,26 +245,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Decorative wave break */}
-      <WaveDivider />
-
       {/* ─── FAQ SECTION ─── */}
-      <section className="bg-[#1b3cc4] text-white px-6 pt-10 md:pt-16 pb-16 md:pb-24">
+      <section className="text-white px-6 pt-10 md:pt-16 pb-16 md:pb-24">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-8 md:mb-12">
+          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-8 md:mb-12 text-white">
             YOUR QUESTIONS ANSWERED
           </h2>
           <FAQ />
         </div>
       </section>
 
-      {/* Decorative wave break */}
-      <WaveDividerReverse />
-
       {/* ─── FINAL CTA SECTION ─── */}
-      <section className="bg-[#2046E8] text-white text-center px-6 pt-12 md:pt-20 pb-16 md:pb-20">
+      <section className="text-white text-center px-6 pt-12 md:pt-20 pb-16 md:pb-20">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-10">
+          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-10 text-white">
             YOU&apos;RE ON THE WAY TO KNOCKING DOWN MORE FANTASTIC PLUS WEEKS
             THAN YOU EVER IMAGINED. GET STARTED TODAY!
           </h2>
@@ -325,13 +266,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#"
-              className="inline-block border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-7 py-3 rounded-none hover:bg-gray-100 transition-colors"
+              className="inline-block border-2 border-white bg-white text-[#0039D7] font-semibold text-[16px] px-7 py-3 rounded-none hover:bg-gray-100 transition-colors"
             >
               Start your 60-day free trial
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-2 border-2 border-white bg-white text-[#2046E8] font-semibold text-[16px] px-7 py-3 rounded-none hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center gap-2 border-2 border-white bg-white text-[#0039D7] font-semibold text-[16px] px-7 py-3 rounded-none hover:bg-gray-100 transition-colors"
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path
@@ -356,19 +297,19 @@ export default function Home() {
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer className="bg-[#0f1b61] text-white/70 px-6 py-6">
+      <footer className="bg-[#002a9e] text-white px-6 py-6">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <span>&copy; 2025, Phoenicia Labs, Inc. All rights reserved.</span>
           <div className="flex items-center gap-6">
             <a
               href="#"
-              className="underline hover:text-white transition-colors"
+              className="underline hover:opacity-80 transition-opacity"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="underline hover:text-white transition-colors"
+              className="underline hover:opacity-80 transition-opacity"
             >
               Terms of Service
             </a>
@@ -376,19 +317,19 @@ export default function Home() {
           {/* Social Icons */}
           <div className="flex items-center gap-4">
             {/* LinkedIn */}
-            <a href="#" aria-label="LinkedIn" className="text-white/70 hover:text-white transition-colors">
+            <a href="#" aria-label="LinkedIn" className="text-white hover:opacity-80 transition-opacity">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
             </a>
             {/* Instagram */}
-            <a href="#" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors">
+            <a href="#" aria-label="Instagram" className="text-white hover:opacity-80 transition-opacity">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
               </svg>
             </a>
             {/* Facebook */}
-            <a href="#" aria-label="Facebook" className="text-white/70 hover:text-white transition-colors">
+            <a href="#" aria-label="Facebook" className="text-white hover:opacity-80 transition-opacity">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
