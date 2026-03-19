@@ -91,7 +91,9 @@ function DashboardMockup() {
       <div className="space-y-2.5">
         {drivers.map((d, i) => (
           <div key={i} className="flex items-center gap-2.5">
-            <div className={`w-2.5 h-2.5 rounded-full ${d.dot} flex-shrink-0`} />
+            <div
+              className={`w-2.5 h-2.5 rounded-full ${d.dot} flex-shrink-0`}
+            />
             <span className="text-[11px] text-gray-600 w-14 flex-shrink-0">
               {d.name}
             </span>
@@ -131,13 +133,7 @@ function DashboardMockup() {
 }
 
 /* ─── Stat Card ─── */
-function StatCard({
-  value,
-  label,
-}: {
-  value: string;
-  label: string;
-}) {
+function StatCard({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex flex-col items-center">
       {/* Down arrow */}
@@ -156,10 +152,10 @@ function StatCard({
           strokeLinejoin="round"
         />
       </svg>
-      <span className="font-display text-4xl md:text-5xl font-bold text-white tracking-wide">
+      <span className="font-display text-[40px] md:text-[52px] leading-[1] text-white tracking-wide">
         {value}
       </span>
-      <span className="text-white/80 text-xs md:text-sm mt-1">{label}</span>
+      <span className="text-white/80 text-[14px] mt-2">{label}</span>
     </div>
   );
 }
@@ -186,21 +182,16 @@ function Check() {
   );
 }
 
-/* ─── MAIN PAGE ─── */
+/* ═══════════════════════════════════════
+   MAIN PAGE
+   ═══════════════════════════════════════ */
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* ══════════════════════════════════════
-          NAVIGATION
-         ══════════════════════════════════════ */}
+      {/* ─── NAVIGATION ─── */}
       <nav className="bg-blue-primary px-5 md:px-10 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-          >
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
             <rect
               width="28"
               height="28"
@@ -222,10 +213,16 @@ export default function Home() {
           </span>
         </div>
         <div className="flex items-center gap-5 md:gap-7 text-white text-xs md:text-sm font-semibold tracking-wider">
-          <a href="#" className="hidden sm:block hover:opacity-80 transition-opacity">
+          <a
+            href="#"
+            className="hidden sm:block hover:opacity-80 transition-opacity"
+          >
             LOGIN
           </a>
-          <a href="#" className="hidden sm:block hover:opacity-80 transition-opacity">
+          <a
+            href="#"
+            className="hidden sm:block hover:opacity-80 transition-opacity"
+          >
             GET STARTED
           </a>
           <button className="flex items-center gap-2 hover:opacity-80 transition-opacity">
@@ -242,28 +239,51 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* ══════════════════════════════════════
-          HERO SECTION
-         ══════════════════════════════════════ */}
+      {/* ─── HERO SECTION ─── */}
       <section className="bg-blue-primary text-white text-center px-6 pt-10 md:pt-16 pb-20 relative">
         <div className="max-w-3xl mx-auto">
-          <h1 className="font-display text-[2rem] md:text-5xl lg:text-[3.5rem] font-bold leading-[1.05] mb-4 tracking-tight">
-            20 DSPS JOINED VIKI&apos;S AI
-            <br className="hidden md:block" /> PARTNERSHIP IN THE LAST MONTH
+          {/* Hero headline — 64px / 58px line-height per spec */}
+          <h1 className="font-display text-[36px] md:text-[52px] lg:text-[64px] leading-[1] md:leading-[58px] mb-4">
+            20 DSPS JOINED VIKI&apos;S AI PARTNERSHIP IN THE LAST MONTH
           </h1>
-          <p className="font-display text-base md:text-xl tracking-[0.15em] mb-8 opacity-85 font-medium">
+          <p className="font-display text-[16px] md:text-[20px] tracking-[0.15em] mb-8 opacity-85">
             WHY ARE YOU STILL WAITING?
           </p>
 
-          {/* Hero Illustration */}
+          {/* Hero Illustration placeholder */}
           <div className="max-w-md mx-auto mb-10 rounded-2xl overflow-hidden">
             <div className="aspect-[4/3] bg-gradient-to-br from-sky-300 via-blue-200 to-amber-200 flex items-center justify-center relative">
-              {/* Placeholder — replace with actual illustration */}
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="opacity-30">
-                  <rect x="8" y="16" width="48" height="36" rx="4" stroke="#1a3ac0" strokeWidth="2" />
-                  <circle cx="32" cy="30" r="8" stroke="#1a3ac0" strokeWidth="2" />
-                  <path d="M16 48l10-12 8 6 12-16 10 12" stroke="#1a3ac0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <svg
+                  width="64"
+                  height="64"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  className="opacity-30"
+                >
+                  <rect
+                    x="8"
+                    y="16"
+                    width="48"
+                    height="36"
+                    rx="4"
+                    stroke="#1a3ac0"
+                    strokeWidth="2"
+                  />
+                  <circle
+                    cx="32"
+                    cy="30"
+                    r="8"
+                    stroke="#1a3ac0"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M16 48l10-12 8 6 12-16 10 12"
+                    stroke="#1a3ac0"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
                 <span className="text-blue-800/40 text-xs font-medium">
                   Hero Illustration
@@ -272,7 +292,8 @@ export default function Home() {
             </div>
           </div>
 
-          <p className="text-sm md:text-[15px] leading-relaxed max-w-xl mx-auto mb-8 opacity-90">
+          {/* Body copy — 18px / 27px per spec */}
+          <p className="text-[16px] md:text-[18px] leading-[27px] max-w-xl mx-auto mb-8 opacity-90">
             Want to put your DSP on autopilot? Then join our new AI Partnership.
             Together, we customize Viki to optimize your Operations across the
             board. Saving you hundreds of thousands of dollars every year. If you
@@ -282,7 +303,7 @@ export default function Home() {
 
           <a
             href="#"
-            className="inline-block bg-white text-gray-900 font-semibold text-sm md:text-base px-8 py-3 rounded-full border-2 border-white hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-gray-900 font-semibold text-[16px] px-8 py-3 rounded-full border-2 border-white hover:bg-gray-100 transition-colors"
           >
             Join Viki&apos;s AI Partnership
           </a>
@@ -292,14 +313,11 @@ export default function Home() {
       {/* Wave: blue → white */}
       <WaveBlueToWhite />
 
-      {/* ══════════════════════════════════════
-          FEATURES SECTION
-         ══════════════════════════════════════ */}
+      {/* ─── FEATURES SECTION ─── */}
       <section className="bg-white px-6 pt-12 md:pt-20 pb-16 md:pb-24">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-display text-2xl md:text-4xl lg:text-[2.6rem] font-bold text-center leading-[1.1] mb-12 md:mb-16 text-gray-900 tracking-tight">
-            HERE&apos;S WHAT YOU CAN EXPECT FROM
-            <br className="hidden sm:block" /> THE WORLD&apos;S FIRST
+          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] text-center mb-12 md:mb-16 text-gray-900">
+            HERE&apos;S WHAT YOU CAN EXPECT FROM THE WORLD&apos;S FIRST
             VOICE-ACTIVATED AI DISPATCHER
           </h2>
 
@@ -316,7 +334,7 @@ export default function Home() {
               ].map((feature, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <Check />
-                  <span className="text-sm md:text-base text-gray-700">
+                  <span className="text-[16px] md:text-[18px] leading-[27px] text-gray-700">
                     {feature}
                   </span>
                 </div>
@@ -334,17 +352,15 @@ export default function Home() {
       {/* Wave: white → blue */}
       <WaveWhiteToBlue />
 
-      {/* ══════════════════════════════════════
-          STATS SECTION
-         ══════════════════════════════════════ */}
+      {/* ─── STATS SECTION ─── */}
       <section className="bg-blue-primary text-white px-6 pt-12 md:pt-20 pb-16 md:pb-20 text-center">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-display text-2xl md:text-4xl lg:text-[2.6rem] font-bold leading-[1.1] mb-6 tracking-tight">
+          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-6">
             SAVE TIME. SAVE MONEY.
             <br />
             SAVE YOUR SANITY.
           </h2>
-          <p className="text-sm md:text-[15px] leading-relaxed max-w-lg mx-auto mb-12 opacity-90">
+          <p className="text-[16px] md:text-[18px] leading-[27px] max-w-lg mx-auto mb-12 opacity-90">
             DSPs who&apos;ve partnered with Viki are racking up massive savings
             in time and money across the board. Join them today and start seeing
             the same results flow to your bottomline.
@@ -361,13 +377,13 @@ export default function Home() {
           <div className="flex flex-col items-center gap-4">
             <a
               href="#"
-              className="inline-block border-2 border-white text-white font-semibold text-sm md:text-base px-8 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
+              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-8 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
             >
               Switch now and earn a $1,000 Bonus
             </a>
             <a
               href="#"
-              className="inline-block border-2 border-white text-white font-semibold text-sm md:text-base px-8 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
+              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-8 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
             >
               Start your 60-day free trial
             </a>
@@ -378,12 +394,10 @@ export default function Home() {
       {/* Wave: blue → white */}
       <WaveBlueToWhite />
 
-      {/* ══════════════════════════════════════
-          FAQ SECTION
-         ══════════════════════════════════════ */}
+      {/* ─── FAQ SECTION ─── */}
       <section className="bg-white px-6 pt-10 md:pt-16 pb-16 md:pb-24">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-2xl md:text-4xl font-bold text-gray-900 mb-8 md:mb-12 tracking-tight">
+          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] text-gray-900 mb-8 md:mb-12">
             YOUR QUESTIONS ANSWERED
           </h2>
           <FAQ />
@@ -393,12 +407,10 @@ export default function Home() {
       {/* Wave: white → blue */}
       <WaveWhiteToBlue />
 
-      {/* ══════════════════════════════════════
-          FINAL CTA SECTION
-         ══════════════════════════════════════ */}
+      {/* ─── FINAL CTA SECTION ─── */}
       <section className="bg-blue-primary text-white text-center px-6 pt-12 md:pt-20 pb-16 md:pb-20">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-2xl md:text-4xl lg:text-[2.6rem] font-bold leading-[1.1] mb-10 tracking-tight">
+          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-10">
             YOU&apos;RE ON THE WAY TO KNOCKING DOWN MORE FANTASTIC PLUS WEEKS
             THAN YOU EVER IMAGINED. GET STARTED TODAY!
           </h2>
@@ -406,21 +418,15 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#"
-              className="inline-block border-2 border-white text-white font-semibold text-sm md:text-base px-7 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
+              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-7 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
             >
               Start your 60-day free trial
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-2 border-2 border-white text-white font-semibold text-sm md:text-base px-7 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
+              className="inline-flex items-center gap-2 border-2 border-white text-white font-semibold text-[16px] px-7 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
             >
-              {/* Speaker icon */}
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
-                fill="none"
-              >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path
                   d="M2 7v4h3l4 4V3L5 7H2z"
                   stroke="currentColor"
@@ -442,17 +448,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════
-          FOOTER
-         ══════════════════════════════════════ */}
+      {/* ─── FOOTER ─── */}
       <footer className="bg-[#0f1b61] text-white/70 px-6 py-6">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <span>&copy; 2025, Phoenicia Labs, Inc. All rights reserved.</span>
           <div className="flex items-center gap-6">
-            <a href="#" className="underline hover:text-white transition-colors">
+            <a
+              href="#"
+              className="underline hover:text-white transition-colors"
+            >
               Privacy Policy
             </a>
-            <a href="#" className="underline hover:text-white transition-colors">
+            <a
+              href="#"
+              className="underline hover:text-white transition-colors"
+            >
               Terms of Service
             </a>
           </div>
