@@ -20,7 +20,7 @@ function StatCard({ value, label }: { value: string; label: string }) {
           strokeLinejoin="round"
         />
       </svg>
-      <span className="font-display text-[40px] md:text-[52px] leading-[1] text-white tracking-wide">
+      <span className="font-[family-name:var(--font-dm-mono)] font-light text-[40px] leading-[36px] text-white">
         {value}
       </span>
       <span className="text-white text-[14px] mt-2">{label}</span>

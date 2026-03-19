@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { DM_Sans, Barlow_Condensed } from "next/font/google";
+import { DM_Sans, DM_Mono, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const dmMono = DM_Mono({
+  variable: "--font-dm-mono",
+  subsets: ["latin"],
+  weight: ["300"],
 });
 
 /* Barlow Condensed as fallback for Acumin Pro Condensed
@@ -30,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${barlowCondensed.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${dmMono.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
       <head>
         {/* Adobe Fonts — Acumin Pro Condensed
