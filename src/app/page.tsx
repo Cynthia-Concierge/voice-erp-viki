@@ -210,7 +210,7 @@ export default function Home() {
 
       {/* ─── STATS SECTION ─── */}
       <section className="text-white px-6 py-12 md:py-20 text-center">
-        <div className="max-w-4xl mx-auto bg-[#0026a0] px-8 md:px-16 py-14 md:py-20">
+        <div className="max-w-4xl mx-auto bg-[#022EAD] px-8 md:px-16 py-14 md:py-20">
           <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-6 text-white">
             SAVE TIME. SAVE MONEY.
             <br />
