@@ -53,13 +53,13 @@ export default function FAQ() {
       {faqs.map((faq, index) => (
         <div
           key={index}
-          className="border-b border-gray-200 last:border-b-0"
+          className="border-b border-white/20 last:border-b-0"
         >
           <button
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
             className="w-full flex items-center justify-between py-5 px-2 text-left hover:opacity-80 transition-opacity cursor-pointer"
           >
-            <span className="text-sm md:text-base font-medium text-gray-900 pr-4">
+            <span className="text-[15px] md:text-[17px] font-medium text-white pr-4">
               {faq.question}
             </span>
             <svg
@@ -73,7 +73,7 @@ export default function FAQ() {
             >
               <path
                 d="M5 8l5 5 5-5"
-                stroke="#6b7280"
+                stroke="white"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -88,7 +88,7 @@ export default function FAQ() {
               paddingRight: "8px",
             }}
           >
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-[15px] text-white/80 leading-relaxed">
               {faq.answer}
             </p>
           </div>

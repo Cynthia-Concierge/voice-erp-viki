@@ -1,18 +1,19 @@
 import FAQ from "@/components/FAQ";
+import Image from "next/image";
 
-/* ─── Wave SVG Dividers ─── */
-function WaveBlueToWhite() {
+/* ─── Decorative Wave Divider (blue-on-blue texture break) ─── */
+function WaveDivider() {
   return (
-    <div className="relative w-full -mt-px">
+    <div className="relative w-full overflow-hidden">
       <svg
         viewBox="0 0 1440 100"
         fill="none"
         preserveAspectRatio="none"
-        className="w-full block h-[60px] md:h-[80px]"
+        className="w-full block h-[50px] md:h-[70px]"
       >
         <path
           d="M0,60 C120,90 240,30 360,55 C480,80 560,25 720,50 C880,75 960,20 1100,55 C1240,90 1340,35 1440,60 L1440,100 L0,100 Z"
-          fill="white"
+          fill="#1b3cc4"
         />
         <path
           d="M0,0 L1440,0 L1440,60 C1340,35 1240,90 1100,55 C960,20 880,75 720,50 C560,25 480,80 360,55 C240,30 120,90 0,60 Z"
@@ -23,14 +24,14 @@ function WaveBlueToWhite() {
   );
 }
 
-function WaveWhiteToBlue() {
+function WaveDividerReverse() {
   return (
-    <div className="relative w-full -mt-px">
+    <div className="relative w-full overflow-hidden">
       <svg
         viewBox="0 0 1440 100"
         fill="none"
         preserveAspectRatio="none"
-        className="w-full block h-[60px] md:h-[80px]"
+        className="w-full block h-[50px] md:h-[70px]"
       >
         <path
           d="M0,60 C160,25 280,85 440,50 C600,15 720,80 900,55 C1080,30 1200,75 1440,45 L1440,100 L0,100 Z"
@@ -38,7 +39,7 @@ function WaveWhiteToBlue() {
         />
         <path
           d="M0,0 L1440,0 L1440,45 C1200,75 1080,30 900,55 C720,80 600,15 440,50 C280,85 160,25 0,60 Z"
-          fill="white"
+          fill="#1b3cc4"
         />
       </svg>
     </div>
@@ -56,11 +57,11 @@ function DashboardMockup() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-2xl p-5 w-full max-w-sm border border-gray-100">
+    <div className="bg-white rounded-2xl shadow-2xl p-5 w-full max-w-sm">
       {/* Header */}
       <div className="flex items-start justify-between mb-1">
         <div className="flex items-center gap-1.5">
-          <div className="w-5 h-5 bg-blue-primary rounded flex items-center justify-center">
+          <div className="w-5 h-5 bg-[#2046E8] rounded flex items-center justify-center">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path
                 d="M2 8V4l2 2.5L6 4v4M8 6h3M8 4h3M8 8h3"
@@ -136,7 +137,6 @@ function DashboardMockup() {
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex flex-col items-center">
-      {/* Down arrow */}
       <svg
         width="28"
         height="28"
@@ -187,31 +187,16 @@ function Check() {
    ═══════════════════════════════════════ */
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[#2046E8]">
       {/* ─── NAVIGATION ─── */}
-      <nav className="bg-blue-primary px-5 md:px-10 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <rect
-              width="28"
-              height="28"
-              rx="6"
-              fill="white"
-              fillOpacity="0.15"
-            />
-            <path
-              d="M6 19V9l4.5 5L14.5 9v10M17 13h5M17 9h5M17 17h5"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span className="text-white text-lg tracking-tight">
-            <span className="font-normal opacity-90">voice</span>
-            <span className="font-bold">ERP</span>
-          </span>
-        </div>
+      <nav className="bg-[#2046E8] px-5 md:px-10 py-4 flex items-center justify-between">
+        <Image
+          src="/voiceerp-logo.svg"
+          alt="VoiceERP"
+          width={118}
+          height={45}
+          priority
+        />
         <div className="flex items-center gap-5 md:gap-7 text-white text-xs md:text-sm font-semibold tracking-wider">
           <a
             href="#"
@@ -240,9 +225,8 @@ export default function Home() {
       </nav>
 
       {/* ─── HERO SECTION ─── */}
-      <section className="bg-blue-primary text-white text-center px-6 pt-10 md:pt-16 pb-20 relative">
+      <section className="bg-[#2046E8] text-white text-center px-6 pt-10 md:pt-16 pb-16">
         <div className="max-w-3xl mx-auto">
-          {/* Hero headline — 64px / 58px line-height per spec */}
           <h1 className="font-display text-[36px] md:text-[52px] lg:text-[64px] leading-[1] md:leading-[58px] mb-4">
             20 DSPS JOINED VIKI&apos;S AI PARTNERSHIP IN THE LAST MONTH
           </h1>
@@ -292,7 +276,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Body copy — 18px / 27px per spec */}
           <p className="text-[16px] md:text-[18px] leading-[27px] max-w-xl mx-auto mb-8 opacity-90">
             Want to put your DSP on autopilot? Then join our new AI Partnership.
             Together, we customize Viki to optimize your Operations across the
@@ -303,20 +286,20 @@ export default function Home() {
 
           <a
             href="#"
-            className="inline-block bg-white text-gray-900 font-semibold text-[16px] px-8 py-3 rounded-full border-2 border-white hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-gray-900 font-semibold text-[16px] px-8 py-3 rounded-full hover:bg-gray-100 transition-colors"
           >
             Join Viki&apos;s AI Partnership
           </a>
         </div>
       </section>
 
-      {/* Wave: blue → white */}
-      <WaveBlueToWhite />
+      {/* Decorative wave break */}
+      <WaveDivider />
 
       {/* ─── FEATURES SECTION ─── */}
-      <section className="bg-white px-6 pt-12 md:pt-20 pb-16 md:pb-24">
+      <section className="bg-[#1b3cc4] text-white px-6 pt-12 md:pt-20 pb-16 md:pb-24">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] text-center mb-12 md:mb-16 text-gray-900">
+          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] text-center mb-12 md:mb-16">
             HERE&apos;S WHAT YOU CAN EXPECT FROM THE WORLD&apos;S FIRST
             VOICE-ACTIVATED AI DISPATCHER
           </h2>
@@ -334,7 +317,7 @@ export default function Home() {
               ].map((feature, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <Check />
-                  <span className="text-[16px] md:text-[18px] leading-[27px] text-gray-700">
+                  <span className="text-[16px] md:text-[18px] leading-[27px] text-white/90">
                     {feature}
                   </span>
                 </div>
@@ -349,11 +332,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Wave: white → blue */}
-      <WaveWhiteToBlue />
+      {/* Decorative wave break */}
+      <WaveDividerReverse />
 
       {/* ─── STATS SECTION ─── */}
-      <section className="bg-blue-primary text-white px-6 pt-12 md:pt-20 pb-16 md:pb-20 text-center">
+      <section className="bg-[#2046E8] text-white px-6 pt-12 md:pt-20 pb-16 md:pb-20 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-6">
             SAVE TIME. SAVE MONEY.
@@ -366,24 +349,22 @@ export default function Home() {
             the same results flow to your bottomline.
           </p>
 
-          {/* Stats Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 mb-14">
             <StatCard value="60hrs" label="per month on scheduling" />
             <StatCard value="40hrs" label="per month on admin" />
             <StatCard value="30%" label="cut in safety infractions" />
           </div>
 
-          {/* CTA Buttons */}
           <div className="flex flex-col items-center gap-4">
             <a
               href="#"
-              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-8 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
+              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-8 py-3 rounded-full hover:bg-white hover:text-[#2046E8] transition-colors"
             >
               Switch now and earn a $1,000 Bonus
             </a>
             <a
               href="#"
-              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-8 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
+              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-8 py-3 rounded-full hover:bg-white hover:text-[#2046E8] transition-colors"
             >
               Start your 60-day free trial
             </a>
@@ -391,24 +372,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Wave: blue → white */}
-      <WaveBlueToWhite />
+      {/* Decorative wave break */}
+      <WaveDivider />
 
       {/* ─── FAQ SECTION ─── */}
-      <section className="bg-white px-6 pt-10 md:pt-16 pb-16 md:pb-24">
+      <section className="bg-[#1b3cc4] text-white px-6 pt-10 md:pt-16 pb-16 md:pb-24">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] text-gray-900 mb-8 md:mb-12">
+          <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-8 md:mb-12">
             YOUR QUESTIONS ANSWERED
           </h2>
           <FAQ />
         </div>
       </section>
 
-      {/* Wave: white → blue */}
-      <WaveWhiteToBlue />
+      {/* Decorative wave break */}
+      <WaveDividerReverse />
 
       {/* ─── FINAL CTA SECTION ─── */}
-      <section className="bg-blue-primary text-white text-center px-6 pt-12 md:pt-20 pb-16 md:pb-20">
+      <section className="bg-[#2046E8] text-white text-center px-6 pt-12 md:pt-20 pb-16 md:pb-20">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] mb-10">
             YOU&apos;RE ON THE WAY TO KNOCKING DOWN MORE FANTASTIC PLUS WEEKS
@@ -418,13 +399,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#"
-              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-7 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
+              className="inline-block border-2 border-white text-white font-semibold text-[16px] px-7 py-3 rounded-full hover:bg-white hover:text-[#2046E8] transition-colors"
             >
               Start your 60-day free trial
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-2 border-2 border-white text-white font-semibold text-[16px] px-7 py-3 rounded-full hover:bg-white hover:text-blue-primary transition-colors"
+              className="inline-flex items-center gap-2 border-2 border-white text-white font-semibold text-[16px] px-7 py-3 rounded-full hover:bg-white hover:text-[#2046E8] transition-colors"
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path
