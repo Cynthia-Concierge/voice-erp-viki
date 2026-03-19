@@ -67,3 +67,22 @@ body {
   transform: scale(0.98);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* ─── Animated audio waveform ─── */
+@keyframes waveform {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.waveform-bar {
+  transform-origin: bottom;
+  animation: waveform var(--wave-dur, 1.2s) ease-in-out infinite;
+  animation-delay: var(--wave-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waveform-bar {
+    animation: none;
+    transform: scaleY(0.6);
+  }
+}

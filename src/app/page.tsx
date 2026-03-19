@@ -248,15 +248,29 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Sound waveform decoration */}
-          <div className="flex items-end justify-center gap-[2px] sm:gap-[3px] h-12 sm:h-16 opacity-40">
-            {[12,20,8,28,14,32,10,24,18,36,6,22,16,40,12,26,20,34,8,30,14,38,10,18,24,42,16,28,12,36,20,14,32,8,26,22,40,10,34,18,6,30,24,16,38,12,28,20,8,36,14,32,22,10,26,18,42,16,34,12,24,20,30,8,38,14,6,28,22,40,10,36,18,32,16,26,12,34,20,24].map((h, i) => (
-              <div
-                key={i}
-                className="w-[2px] sm:w-[3px] bg-white/70 rounded-t-sm"
-                style={{ height: `${Math.round(h * 0.7)}px` }}
-              />
-            ))}
+          {/* Animated audio waveform */}
+          <div className="flex items-end justify-center gap-[2px] sm:gap-[3px] h-20 sm:h-28 md:h-36">
+            {Array.from({ length: 80 }, (_, i) => {
+              // Create a natural waveform envelope — taller in center, shorter at edges
+              const center = 40;
+              const dist = Math.abs(i - center) / center;
+              const envelope = 1 - dist * dist; // parabolic falloff
+              const baseH = 12 + envelope * 52;
+              // Vary timing so bars don't pulse in unison
+              const delay = ((i * 0.07) % 1.8).toFixed(2);
+              const dur = (0.8 + (i % 7) * 0.15).toFixed(2);
+              return (
+                <div
+                  key={i}
+                  className="waveform-bar w-[2px] sm:w-[3px] bg-white/50 rounded-t-sm"
+                  style={{
+                    height: `${Math.round(baseH)}px`,
+                    ["--wave-delay" as string]: `${delay}s`,
+                    ["--wave-dur" as string]: `${dur}s`,
+                  }}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
