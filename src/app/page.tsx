@@ -28,20 +28,20 @@ function StatCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-/* ─── Blue Checkmark ─── */
+/* ─── Blue Checkmark (outline circle with check) ─── */
 function Check() {
   return (
     <svg
-      width="18"
-      height="18"
+      width="16"
+      height="16"
       viewBox="0 0 22 22"
       fill="none"
       className="flex-shrink-0 mt-0.5"
     >
-      <circle cx="11" cy="11" r="11" fill="#AFE2FF" />
+      <circle cx="11" cy="11" r="10" stroke="#AFE2FF" strokeWidth="2" fill="none" />
       <path
         d="M6.5 11.5l3 3 6-6"
-        stroke="white"
+        stroke="#AFE2FF"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -167,16 +167,16 @@ export default function Home() {
       </section>
 
       {/* ─── FEATURES SECTION ─── */}
-      <section className="text-white px-6 pt-12 md:pt-20 pb-16 md:pb-24">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative text-white px-6 pt-12 md:pt-20 pb-0 overflow-hidden">
+        <div className="max-w-5xl mx-auto relative z-10">
           <h2 className="font-display text-[24px] md:text-[36px] lg:text-[42px] leading-[1.05] text-center mb-12 md:mb-16 text-white">
             HERE&apos;S WHAT YOU CAN EXPECT FROM THE WORLD&apos;S FIRST
             VOICE-ACTIVATED AI DISPATCHER
           </h2>
 
-          <div className="flex flex-col md:flex-row items-start gap-10 md:gap-16">
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 pb-40 md:pb-52">
             {/* Feature List */}
-            <div className="flex-1 space-y-4">
+            <div className="flex-1 space-y-5">
               {[
                 "Calls and books drivers",
                 "Coordinates rescues",
@@ -194,17 +194,31 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Dashboard Screenshot */}
+            {/* Dashboard Screenshot — tilted */}
             <div className="flex-1 flex justify-center">
-              <Image
-                src="/dashboard-mockup.webp"
-                alt="VoiceERP Driver Roster Dashboard"
-                width={500}
-                height={600}
-                className="w-full max-w-md shadow-2xl"
-              />
+              <div className="rotate-[4deg] hover:rotate-0 transition-transform duration-500">
+                <Image
+                  src="/dashboard-mockup.webp"
+                  alt="VoiceERP Driver Roster Dashboard"
+                  width={500}
+                  height={600}
+                  className="w-full max-w-md shadow-2xl"
+                />
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Clouds at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-[120px] md:h-[180px] z-0">
+          <div className="absolute bottom-0 left-[-5%] w-[35%] h-[90%] bg-white rounded-full blur-xl opacity-90" />
+          <div className="absolute bottom-0 left-[15%] w-[30%] h-[80%] bg-white rounded-full blur-xl opacity-80" />
+          <div className="absolute bottom-0 left-[35%] w-[35%] h-[100%] bg-white rounded-full blur-xl opacity-90" />
+          <div className="absolute bottom-0 right-[15%] w-[30%] h-[85%] bg-white rounded-full blur-xl opacity-85" />
+          <div className="absolute bottom-0 right-[-5%] w-[35%] h-[90%] bg-white rounded-full blur-xl opacity-90" />
+          <div className="absolute bottom-0 left-[5%] w-[25%] h-[70%] bg-white rounded-full blur-lg opacity-95" />
+          <div className="absolute bottom-0 right-[5%] w-[25%] h-[75%] bg-white rounded-full blur-lg opacity-95" />
+          <div className="absolute bottom-0 left-[25%] w-[50%] h-[60%] bg-white rounded-full blur-lg opacity-100" />
         </div>
       </section>
 
