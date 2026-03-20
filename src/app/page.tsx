@@ -110,10 +110,10 @@ export default function Home() {
       <section className="text-white text-center px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-12 sm:pb-16">
         <div className="max-w-3xl mx-auto">
           <h1 className="font-display text-[32px] sm:text-[36px] md:text-[52px] lg:text-[64px] leading-[1.05] sm:leading-[1] md:leading-[58px] mb-3 sm:mb-4 text-white">
-            20 DSPS JOINED VIKI&apos;S AI PARTNERSHIP IN THE LAST MONTH
+            20 AMAZON DSP OWNERS JOINED VIKI THIS MONTH
           </h1>
           <p className="font-display text-[14px] sm:text-[16px] md:text-[20px] tracking-[0.15em] mb-6 sm:mb-8 text-[#AFE2FF]">
-            WHY ARE YOU STILL WAITING?
+            THEY&apos;RE GETTING 100+ HOURS BACK. YOU&apos;RE STILL DOING DISPATCH.
           </p>
         </div>
 
@@ -132,11 +132,8 @@ export default function Home() {
 
         <div className="max-w-3xl mx-auto">
           <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[25px] sm:leading-[27px] max-w-xl mx-auto mb-6 sm:mb-8 text-white">
-            Want to put your DSP on autopilot? Then join our new AI Partnership.
-            Together, we customize Viki to optimize your Operations across the
-            board. Saving you hundreds of thousands of dollars every year. If you
-            enroll today, you will also receive a discounted per-driver price
-            along with free Viki Upgrades for life. Limited spaces available.
+            The world&apos;s first voice-activated AI dispatcher — built
+            specifically for Amazon DSPs.
           </p>
 
           <button
@@ -152,8 +149,7 @@ export default function Home() {
       <section className="text-white px-4 sm:px-6 pt-10 sm:pt-12 md:pt-20 pb-12 sm:pb-16 md:pb-24">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-display text-[36px] md:text-[36px] lg:text-[42px] leading-[1.1] sm:leading-[1.05] text-center mb-8 sm:mb-12 md:mb-16 text-white">
-            HERE&apos;S WHAT YOU CAN EXPECT FROM THE WORLD&apos;S FIRST
-            VOICE-ACTIVATED AI DISPATCHER
+            WHAT AMAZON DSP OWNERS GET WITH VIKI
           </h2>
 
           <div className="flex flex-col md:flex-row items-center gap-8 sm:gap-10 md:gap-16">
@@ -194,9 +190,7 @@ export default function Home() {
       <section className="text-white px-4 sm:px-6 py-10 sm:py-12 md:py-20 text-center">
         <div className="max-w-4xl mx-auto bg-[#022EAD] px-5 sm:px-8 md:px-16 py-10 sm:py-14 md:py-20">
           <h2 className="font-display text-[22px] sm:text-[24px] md:text-[36px] lg:text-[42px] leading-[1.1] sm:leading-[1.05] mb-4 sm:mb-6 text-white">
-            SAVE TIME. SAVE MONEY.
-            <br />
-            SAVE YOUR SANITY.
+            AMAZON DSP OWNERS ARE SAVING $150K+/YEAR WITH VIKI
           </h2>
           <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[25px] sm:leading-[27px] max-w-lg mx-auto mb-8 sm:mb-12 text-white">
             DSPs who&apos;ve partnered with Viki are racking up massive savings
