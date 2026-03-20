@@ -68,15 +68,3 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ─── Animated audio waveform ─── */
-@keyframes waveform-pulse {
-  0%, 100% { transform: scaleY(0.25); }
-  50% { transform: scaleY(1); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .waveform-bar {
-    animation: none !important;
-    transform: scaleY(0.5);
-  }
-}

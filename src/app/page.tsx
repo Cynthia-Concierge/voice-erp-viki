@@ -242,25 +242,30 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Animated audio waveform */}
-          <div className="flex items-end justify-center gap-[3px] sm:gap-[4px] h-24 sm:h-32 md:h-40 px-2">
-            {Array.from({ length: 48 }, (_, i) => {
-              const center = 24;
+          {/* Animated audio waveform — keyframes injected inline so Tailwind can't strip them */}
+          <style dangerouslySetInnerHTML={{ __html: `
+            @keyframes wp{0%,100%{transform:scaleY(.2)}50%{transform:scaleY(1)}}
+          `}} />
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 4, height: 120, padding: "0 8px" }}>
+            {Array.from({ length: 50 }, (_, i) => {
+              const center = 25;
               const dist = Math.abs(i - center) / center;
-              const envelope = 1 - dist * dist * 0.7;
-              const h = Math.round(20 + envelope * 80);
-              const dur = (0.8 + ((i * 7) % 11) * 0.1).toFixed(2);
-              const delay = (((i * 3) % 17) * 0.12).toFixed(2);
+              const envelope = 1 - dist * dist * 0.6;
+              const h = 16 + envelope * 104;
+              const dur = 0.8 + ((i * 7) % 11) * 0.12;
+              const delay = ((i * 3) % 19) * 0.11;
+              const opacity = 0.4 + envelope * 0.5;
               return (
                 <div
                   key={i}
-                  className="waveform-bar rounded-full"
                   style={{
-                    width: 4,
+                    width: 5,
+                    minWidth: 5,
                     height: h,
-                    background: `rgba(255, 255, 255, ${0.5 + envelope * 0.4})`,
+                    borderRadius: 3,
+                    background: `rgba(255,255,255,${opacity.toFixed(2)})`,
                     transformOrigin: "bottom",
-                    animation: `waveform-pulse ${dur}s ease-in-out ${delay}s infinite`,
+                    animation: `wp ${dur.toFixed(2)}s ease-in-out ${delay.toFixed(2)}s infinite`,
                   }}
                 />
               );
