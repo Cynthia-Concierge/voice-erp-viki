@@ -74,6 +74,11 @@ export default function LeadModal({ onClose }: { onClose: () => void }) {
       JSON.stringify({ name, email, phone: cleanPhone, ts: Date.now() })
     );
 
+    // Meta Pixel — Lead event
+    if (typeof window !== "undefined" && (window as any).fbq) {
+      (window as any).fbq("track", "Lead");
+    }
+
     // Send lead to GHL in the background — don't block redirect
     fetch("/api/leads", {
       method: "POST",
