@@ -249,24 +249,24 @@ export default function Home() {
           </div>
 
           {/* Animated audio waveform */}
-          <div className="flex items-end justify-center gap-[2px] sm:gap-[3px] h-20 sm:h-28 md:h-36">
-            {Array.from({ length: 80 }, (_, i) => {
-              // Create a natural waveform envelope — taller in center, shorter at edges
-              const center = 40;
+          <div className="flex items-end justify-center gap-[3px] sm:gap-[4px] h-24 sm:h-32 md:h-40 px-2">
+            {Array.from({ length: 48 }, (_, i) => {
+              const center = 24;
               const dist = Math.abs(i - center) / center;
-              const envelope = 1 - dist * dist; // parabolic falloff
-              const baseH = 12 + envelope * 52;
-              // Vary timing so bars don't pulse in unison
-              const delay = ((i * 0.07) % 1.8).toFixed(2);
-              const dur = (0.8 + (i % 7) * 0.15).toFixed(2);
+              const envelope = 1 - dist * dist * 0.7;
+              const h = Math.round(20 + envelope * 80);
+              const dur = (0.8 + ((i * 7) % 11) * 0.1).toFixed(2);
+              const delay = (((i * 3) % 17) * 0.12).toFixed(2);
               return (
                 <div
                   key={i}
-                  className="waveform-bar w-[2px] sm:w-[3px] bg-white/50 rounded-t-sm"
+                  className="waveform-bar rounded-full"
                   style={{
-                    height: `${Math.round(baseH)}px`,
-                    ["--wave-delay" as string]: `${delay}s`,
-                    ["--wave-dur" as string]: `${dur}s`,
+                    width: 4,
+                    height: h,
+                    background: `rgba(255, 255, 255, ${0.5 + envelope * 0.4})`,
+                    transformOrigin: "bottom",
+                    animation: `waveform-pulse ${dur}s ease-in-out ${delay}s infinite`,
                   }}
                 />
               );
