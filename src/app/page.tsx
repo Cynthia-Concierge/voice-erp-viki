@@ -242,28 +242,26 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Animated audio waveform — keyframes injected inline so Tailwind can't strip them */}
+          {/* Animated audio waveform */}
           <style dangerouslySetInnerHTML={{ __html: `
-            @keyframes wp{0%,100%{transform:scaleY(.2)}50%{transform:scaleY(1)}}
+            @keyframes wp{0%,100%{transform:scaleY(.15)}50%{transform:scaleY(1)}}
           `}} />
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 4, height: 120, padding: "0 8px" }}>
-            {Array.from({ length: 50 }, (_, i) => {
-              const center = 25;
-              const dist = Math.abs(i - center) / center;
-              const envelope = 1 - dist * dist * 0.6;
-              const h = 16 + envelope * 104;
-              const dur = 0.8 + ((i * 7) % 11) * 0.12;
-              const delay = ((i * 3) % 19) * 0.11;
-              const opacity = 0.4 + envelope * 0.5;
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", height: 80, padding: 0, width: "100%", overflow: "hidden" }}>
+            {Array.from({ length: 120 }, (_, i) => {
+              // Gentle wave shape — no center peak, just subtle random variation
+              const wave = Math.sin(i * 0.3) * 0.3 + 0.7;
+              const h = 20 + wave * 60;
+              const dur = 1.0 + ((i * 7) % 13) * 0.15;
+              const delay = ((i * 3) % 23) * 0.09;
               return (
                 <div
                   key={i}
                   style={{
-                    width: 5,
-                    minWidth: 5,
+                    flex: 1,
+                    minWidth: 0,
                     height: h,
-                    borderRadius: 3,
-                    background: `rgba(255,255,255,${opacity.toFixed(2)})`,
+                    borderRadius: 2,
+                    background: "rgba(255,255,255,0.18)",
                     transformOrigin: "bottom",
                     animation: `wp ${dur.toFixed(2)}s ease-in-out ${delay.toFixed(2)}s infinite`,
                   }}
