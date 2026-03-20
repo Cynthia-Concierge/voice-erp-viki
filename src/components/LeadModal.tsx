@@ -115,11 +115,11 @@ export default function LeadModal({ onClose }: { onClose: () => void }) {
         </button>
 
         <h2 className="font-display text-[24px] md:text-[28px] leading-[1.1] text-white mb-2">
-          GET STARTED WITH VIKI
+          SEE HOW VIKI RUNS YOUR DSP
         </h2>
         <p className="text-white/80 text-[14px] mb-6">
-          Enter your details and we&apos;ll get you set up with a free
-          consultation.
+          We&apos;ll walk you through a live demo with YOUR routes, YOUR
+          drivers. 15 minutes. No pitch, just proof.
         </p>
 
         {error && (

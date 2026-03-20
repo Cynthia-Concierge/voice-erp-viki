@@ -140,7 +140,7 @@ export default function Home() {
             onClick={() => setModalOpen(true)}
             className="btn-pop inline-block bg-white text-[#0039D7] font-semibold text-[15px] sm:text-[16px] px-6 sm:px-8 py-3 rounded-none"
           >
-            Join Viki&apos;s AI Partnership
+            Show Me How It Works
           </button>
         </div>
       </section>
