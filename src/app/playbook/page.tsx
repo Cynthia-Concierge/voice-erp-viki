@@ -174,118 +174,150 @@ export default function PlaybookPage() {
       </nav>
 
       {/* ─── HERO SECTION ─── */}
-      <section className="text-white px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-12 sm:pb-16 md:pb-20">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
-          {/* Left — Copy */}
-          <div className="flex-1 text-center md:text-left">
-            <span className="inline-block font-[family-name:var(--font-dm-mono)] font-light text-[12px] sm:text-[13px] tracking-[0.2em] text-[#AFE2FF] mb-4">
-              FREE PLAYBOOK
-            </span>
-            <h1 className="font-display text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] leading-[1.05] mb-4 text-white">
-              HOW 20 DSP OWNERS ELIMINATED 5AM EMERGENCY CALLS AND GOT THEIR WEEKENDS BACK
-            </h1>
-            <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[25px] sm:leading-[27px] text-white/80 mb-6">
-              The tactical playbook Amazon DSP operators are using to stop
-              bleeding 45 minutes every time a driver calls out at 4:47 AM.
-            </p>
-            <div className="space-y-2.5 mb-6 text-left inline-block">
-              {[
-                "The real cost of callouts (it\u2019s not just time)",
-                "3 systems top DSPs use for automated coverage",
-                "Build a backup roster that self-activates",
-                "Callout escalation flowchart template",
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <Check />
-                  <span className="text-[14px] sm:text-[15px] leading-[20px] text-white/90">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <button
-              onClick={scrollToForm}
-              className="btn-pop md:hidden inline-block bg-white text-[#0039D7] font-semibold text-[15px] px-8 py-3 rounded-none"
-            >
-              Get the Free Playbook
-            </button>
-          </div>
+      <section
+        className="relative text-white overflow-hidden"
+        style={{
+          backgroundImage: "url(/playbook-bg.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Blue overlay for readability */}
+        <div className="absolute inset-0 bg-[#0039D7]/75" />
 
-          {/* Right — Form */}
-          <div ref={formRef} className="w-full md:w-[420px] flex-shrink-0">
-            <div className="bg-[#022EAD] p-6 sm:p-8">
-              <h2 className="font-display text-[22px] sm:text-[24px] leading-[1.1] text-white mb-2">
-                GET THE FREE PLAYBOOK
-              </h2>
-              <p className="text-white/70 text-[14px] mb-6">
-                Enter your info and we&apos;ll send the 5AM Callout Playbook
-                straight to your inbox.
+        <div className="relative z-10 px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-0 sm:pb-0 md:pb-0">
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-end gap-0 lg:gap-6">
+            {/* Left — Copy */}
+            <div className="flex-1 text-center lg:text-left pb-8 sm:pb-10 lg:pb-16">
+              <span className="inline-block font-[family-name:var(--font-dm-mono)] font-light text-[12px] sm:text-[13px] tracking-[0.2em] text-[#AFE2FF] mb-4">
+                FREE PLAYBOOK
+              </span>
+              <h1 className="font-display text-[28px] sm:text-[36px] md:text-[44px] lg:text-[48px] leading-[1.05] mb-4 text-white">
+                HOW 20 DSP OWNERS ELIMINATED 5AM EMERGENCY CALLS AND GOT THEIR WEEKENDS BACK
+              </h1>
+              <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[25px] sm:leading-[27px] text-white/80 mb-6">
+                The tactical playbook Amazon DSP operators are using to stop
+                bleeding 45 minutes every time a driver calls out at 4:47 AM.
               </p>
+              <div className="space-y-2.5 mb-6 text-left inline-block">
+                {[
+                  "The real cost of callouts (it\u2019s not just time)",
+                  "3 systems top DSPs use for automated coverage",
+                  "Build a backup roster that self-activates",
+                  "Callout escalation flowchart template",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <Check />
+                    <span className="text-[14px] sm:text-[15px] leading-[20px] text-white/90">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={scrollToForm}
+                className="btn-pop lg:hidden inline-block bg-white text-[#0039D7] font-semibold text-[15px] px-8 py-3 rounded-none"
+              >
+                Get the Free Playbook
+              </button>
+            </div>
 
-              {error && (
-                <p className="text-red-300 text-[14px] mb-4 bg-red-500/20 px-3 py-2">
-                  {error}
-                </p>
-              )}
+            {/* Center — Viki character (visible on lg+) */}
+            <div className="hidden lg:flex flex-shrink-0 items-end justify-center" style={{ width: 280 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/viki-playbook.png"
+                alt="Viki holding the 5AM Callout Playbook"
+                className="w-full h-auto max-h-[520px] object-contain object-bottom drop-shadow-2xl"
+              />
+            </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  required
-                  minLength={2}
-                  placeholder="Full Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/30 text-white placeholder:text-white/50 text-[15px] outline-none focus:border-white transition-colors"
-                />
-                <input
-                  type="email"
-                  required
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/30 text-white placeholder:text-white/50 text-[15px] outline-none focus:border-white transition-colors"
-                />
-                <input
-                  type="tel"
-                  required
-                  placeholder="(555) 123-4567"
-                  value={phone}
-                  onChange={handlePhoneChange}
-                  inputMode="numeric"
-                  maxLength={14}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/30 text-white placeholder:text-white/50 text-[15px] outline-none focus:border-white transition-colors"
-                />
-                <select
-                  value={driverCount}
-                  onChange={(e) => setDriverCount(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/30 text-white text-[15px] outline-none focus:border-white transition-colors appearance-none"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "right 16px center",
-                  }}
-                >
-                  <option value="" className="text-gray-900">How many drivers?</option>
-                  <option value="1-20" className="text-gray-900">1 &ndash; 20 drivers</option>
-                  <option value="21-40" className="text-gray-900">21 &ndash; 40 drivers</option>
-                  <option value="41-60" className="text-gray-900">41 &ndash; 60 drivers</option>
-                  <option value="61-100" className="text-gray-900">61 &ndash; 100 drivers</option>
-                  <option value="100+" className="text-gray-900">100+ drivers</option>
-                </select>
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="btn-pop w-full bg-white text-[#0039D7] font-semibold text-[16px] px-8 py-3.5 rounded-none hover:bg-gray-100 transition-colors disabled:opacity-60"
-                >
-                  {submitting ? "Sending..." : "Send Me the Playbook"}
-                </button>
-                <p className="text-white/50 text-[12px] text-center">
-                  No spam. Just the playbook. Unsubscribe anytime.
+            {/* Right — Form */}
+            <div ref={formRef} className="w-full lg:w-[380px] flex-shrink-0 pb-8 sm:pb-10 lg:pb-16">
+              <div className="bg-[#022EAD]/90 backdrop-blur-sm p-6 sm:p-8 border border-white/10">
+                <h2 className="font-display text-[22px] sm:text-[24px] leading-[1.1] text-white mb-2">
+                  GET THE FREE PLAYBOOK
+                </h2>
+                <p className="text-white/70 text-[14px] mb-6">
+                  Enter your info and we&apos;ll send the 5AM Callout Playbook
+                  straight to your inbox.
                 </p>
-              </form>
+
+                {error && (
+                  <p className="text-red-300 text-[14px] mb-4 bg-red-500/20 px-3 py-2">
+                    {error}
+                  </p>
+                )}
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input
+                    type="text"
+                    required
+                    minLength={2}
+                    placeholder="Full Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/30 text-white placeholder:text-white/50 text-[15px] outline-none focus:border-white transition-colors"
+                  />
+                  <input
+                    type="email"
+                    required
+                    placeholder="Email Address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/30 text-white placeholder:text-white/50 text-[15px] outline-none focus:border-white transition-colors"
+                  />
+                  <input
+                    type="tel"
+                    required
+                    placeholder="(555) 123-4567"
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    inputMode="numeric"
+                    maxLength={14}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/30 text-white placeholder:text-white/50 text-[15px] outline-none focus:border-white transition-colors"
+                  />
+                  <select
+                    value={driverCount}
+                    onChange={(e) => setDriverCount(e.target.value)}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/30 text-white text-[15px] outline-none focus:border-white transition-colors appearance-none"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "right 16px center",
+                    }}
+                  >
+                    <option value="" className="text-gray-900">How many drivers?</option>
+                    <option value="1-20" className="text-gray-900">1 &ndash; 20 drivers</option>
+                    <option value="21-40" className="text-gray-900">21 &ndash; 40 drivers</option>
+                    <option value="41-60" className="text-gray-900">41 &ndash; 60 drivers</option>
+                    <option value="61-100" className="text-gray-900">61 &ndash; 100 drivers</option>
+                    <option value="100+" className="text-gray-900">100+ drivers</option>
+                  </select>
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="btn-pop w-full bg-white text-[#0039D7] font-semibold text-[16px] px-8 py-3.5 rounded-none hover:bg-gray-100 transition-colors disabled:opacity-60"
+                  >
+                    {submitting ? "Sending..." : "Send Me the Playbook"}
+                  </button>
+                  <p className="text-white/50 text-[12px] text-center">
+                    No spam. Just the playbook. Unsubscribe anytime.
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Viki character on mobile/tablet (below copy, above form) */}
+        <div className="relative z-10 flex lg:hidden justify-center -mt-4 mb-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/viki-playbook.png"
+            alt="Viki holding the 5AM Callout Playbook"
+            className="h-[280px] sm:h-[340px] w-auto object-contain drop-shadow-2xl"
+          />
         </div>
       </section>
 
