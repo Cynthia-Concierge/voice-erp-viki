@@ -223,12 +223,13 @@ export default function PlaybookPage() {
             </div>
 
             {/* Center — Viki character (visible on lg+) */}
-            <div className="hidden lg:flex flex-shrink-0 items-end justify-center" style={{ width: 280 }}>
+            <div className="hidden lg:flex flex-shrink-0 items-end justify-center self-end" style={{ width: 340, marginBottom: -4 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/viki-playbook.png"
                 alt="Viki holding the 5AM Callout Playbook"
-                className="w-full h-auto max-h-[520px] object-contain object-bottom drop-shadow-2xl"
+                className="w-full h-auto object-contain object-bottom drop-shadow-2xl"
+                style={{ minHeight: 580 }}
               />
             </div>
 
@@ -316,7 +317,7 @@ export default function PlaybookPage() {
           <img
             src="/viki-playbook.png"
             alt="Viki holding the 5AM Callout Playbook"
-            className="h-[280px] sm:h-[340px] w-auto object-contain drop-shadow-2xl"
+            className="h-[340px] sm:h-[420px] md:h-[480px] w-auto object-contain drop-shadow-2xl"
           />
         </div>
       </section>
