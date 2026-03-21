@@ -174,48 +174,6 @@ export default function PlaybookPage() {
       </nav>
 
       {/* ─── HERO SECTION ─── */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        .viki-hero {
-          position: absolute;
-          bottom: 0;
-          right: 5%;
-          transform: translateX(10%);
-          height: 75vh;
-          max-height: 800px;
-          width: auto;
-          z-index: 2;
-          pointer-events: none;
-          filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)) brightness(1.05) contrast(1.05);
-        }
-        @media (max-width: 1279px) and (min-width: 1024px) {
-          .viki-hero { height: 65vh; right: 2%; }
-        }
-        @media (min-width: 1440px) {
-          .viki-hero { height: 80vh; right: 8%; }
-        }
-        /* Glow behind Viki */
-        .hero-glow {
-          position: absolute;
-          right: 15%;
-          bottom: 0;
-          width: 500px;
-          height: 500px;
-          background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
-          z-index: 1;
-          pointer-events: none;
-        }
-        /* Soft depth blur on right half */
-        .hero-depth {
-          position: absolute;
-          right: 0;
-          top: 0;
-          width: 50%;
-          height: 100%;
-          backdrop-filter: blur(4px);
-          -webkit-backdrop-filter: blur(4px);
-          z-index: 0;
-        }
-      `}} />
       <section
         className="relative text-white overflow-hidden"
         style={{
@@ -225,27 +183,13 @@ export default function PlaybookPage() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Gradient overlays: left side for copy readability, right side for form */}
+        {/* Gradient overlay for text readability */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(0,57,215,0.88) 0%, rgba(0,57,215,0.55) 40%, rgba(0,57,215,0.15) 60%, rgba(0,57,215,0.75) 80%, rgba(0,57,215,0.88) 100%)",
+              "linear-gradient(to right, rgba(0,57,215,0.88) 0%, rgba(0,57,215,0.6) 50%, rgba(0,57,215,0.8) 100%)",
           }}
-        />
-
-        {/* Depth blur on right half */}
-        <div className="hero-depth hidden lg:block" />
-
-        {/* Glow behind Viki */}
-        <div className="hero-glow hidden lg:block" />
-
-        {/* Viki — absolutely positioned hero visual */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/viki-playbook.png"
-          alt="Viki holding the 5AM Callout Playbook"
-          className="viki-hero hidden lg:block"
         />
 
         <div className="relative px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-10 sm:pb-12 md:pb-16" style={{ zIndex: 3 }}>
