@@ -65,7 +65,7 @@ async function addToApollo(firstName: string, lastName: string, emailAddr: strin
 }
 
 export async function POST(req: NextRequest) {
-  const { name, email, phone } = await req.json();
+  const { name, email, phone, source, tags } = await req.json();
 
   if (!name?.trim() || !email?.trim() || !phone?.trim()) {
     return NextResponse.json({ error: "All fields are required" }, { status: 400 });
@@ -96,6 +96,10 @@ export async function POST(req: NextRequest) {
   const lastName = rest.join(" ") || "";
   const cleanEmail = email.trim().toLowerCase();
 
+  // Allow callers to specify source & tags for different funnels
+  const leadSource = source?.trim() || "VoiceERP Landing Page";
+  const leadTags = tags?.length ? tags : ["ad-funnel"];
+
   // Send to GHL + Apollo in parallel
   const [ghlRes] = await Promise.all([
     fetch("https://services.leadconnectorhq.com/contacts/", {
@@ -111,8 +115,8 @@ export async function POST(req: NextRequest) {
         lastName,
         email: cleanEmail,
         phone: cleanPhone,
-        source: "VoiceERP Landing Page",
-        tags: ["ad-funnel"],
+        source: leadSource,
+        tags: leadTags,
       }),
     }),
     addToApollo(firstName, lastName, cleanEmail, cleanPhone),
