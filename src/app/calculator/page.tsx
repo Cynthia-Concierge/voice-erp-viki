@@ -372,15 +372,28 @@ export default function CalculatorPage() {
       });
     }
 
-    fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name, email, phone: cleanPhone,
-        source: "DSP Savings Calculator",
-        tags: ["calculator-lead", `drivers-${drivers}`, `method-${method}`],
-      }),
-    }).catch(() => {});
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name, email, phone: cleanPhone,
+          source: "DSP Savings Calculator",
+          tags: ["calculator-lead", `drivers-${drivers}`, `method-${method}`],
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+      setSubmitting(false);
+      return;
+    }
 
     setSubmitting(false);
     setUnlocked(true);

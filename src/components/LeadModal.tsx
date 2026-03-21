@@ -79,12 +79,30 @@ export default function LeadModal({ onClose }: { onClose: () => void }) {
       (window as any).fbq("track", "Lead");
     }
 
-    // Send lead to GHL in the background — don't block redirect
-    fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, phone: cleanPhone }),
-    }).catch(() => {});
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: cleanPhone,
+          source: "VoiceERP Landing Page",
+          tags: ["ad-funnel", "demo-request"],
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+      setSubmitting(false);
+      return;
+    }
 
     router.push("/schedule");
   }

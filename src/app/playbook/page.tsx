@@ -135,17 +135,33 @@ export default function PlaybookPage() {
     }
 
     // Send to GHL with playbook-specific source & tags
-    fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        email,
-        phone: cleanPhone,
-        source: "5AM Callout Playbook",
-        tags: ["playbook-lead", "5am-callout"],
-      }),
-    }).catch(() => {});
+    const leadTags = ["playbook-lead", "5am-callout"];
+    if (driverCount) leadTags.push(`drivers-${driverCount}`);
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: cleanPhone,
+          source: "5AM Callout Playbook",
+          tags: leadTags,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+      setSubmitting(false);
+      return;
+    }
 
     router.push("/playbook/thank-you");
   }
