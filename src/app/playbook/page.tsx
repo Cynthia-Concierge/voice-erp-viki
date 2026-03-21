@@ -177,18 +177,25 @@ export default function PlaybookPage() {
       <section
         className="relative text-white overflow-hidden"
         style={{
-          backgroundImage: "url(/playbook-bg.jpg)",
+          backgroundImage: "url(/playbook-hero.png)",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center bottom",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Blue overlay for readability */}
-        <div className="absolute inset-0 bg-[#0039D7]/75" />
+        {/* Gradient overlays: left side for copy readability, right side for form */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(0,57,215,0.88) 0%, rgba(0,57,215,0.55) 40%, rgba(0,57,215,0.15) 60%, rgba(0,57,215,0.75) 80%, rgba(0,57,215,0.88) 100%)",
+          }}
+        />
 
-        <div className="relative z-10 px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-0 sm:pb-0 md:pb-0">
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-end gap-0 lg:gap-6">
+        <div className="relative z-10 px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-10 sm:pb-12 md:pb-16">
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
             {/* Left — Copy */}
-            <div className="flex-1 text-center lg:text-left pb-8 sm:pb-10 lg:pb-16">
+            <div className="flex-1 text-center lg:text-left pt-0 lg:pt-4">
               <span className="inline-block font-[family-name:var(--font-dm-mono)] font-light text-[12px] sm:text-[13px] tracking-[0.2em] text-[#AFE2FF] mb-4">
                 FREE PLAYBOOK
               </span>
@@ -222,19 +229,8 @@ export default function PlaybookPage() {
               </button>
             </div>
 
-            {/* Center — Viki character (visible on lg+) */}
-            <div className="hidden lg:flex flex-shrink-0 items-end justify-center self-end" style={{ width: 340, marginBottom: -4 }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/viki-playbook.png"
-                alt="Viki holding the 5AM Callout Playbook"
-                className="w-full h-auto object-contain object-bottom drop-shadow-2xl"
-                style={{ minHeight: 580 }}
-              />
-            </div>
-
             {/* Right — Form */}
-            <div ref={formRef} className="w-full lg:w-[380px] flex-shrink-0 pb-8 sm:pb-10 lg:pb-16">
+            <div ref={formRef} className="w-full lg:w-[380px] flex-shrink-0">
               <div className="bg-[#022EAD]/90 backdrop-blur-sm p-6 sm:p-8 border border-white/10">
                 <h2 className="font-display text-[22px] sm:text-[24px] leading-[1.1] text-white mb-2">
                   GET THE FREE PLAYBOOK
@@ -309,16 +305,6 @@ export default function PlaybookPage() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Viki character on mobile/tablet (below copy, above form) */}
-        <div className="relative z-10 flex lg:hidden justify-center -mt-4 mb-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/viki-playbook.png"
-            alt="Viki holding the 5AM Callout Playbook"
-            className="h-[340px] sm:h-[420px] md:h-[480px] w-auto object-contain drop-shadow-2xl"
-          />
         </div>
       </section>
 
