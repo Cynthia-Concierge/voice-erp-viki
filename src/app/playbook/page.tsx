@@ -177,9 +177,9 @@ export default function PlaybookPage() {
       <section
         className="relative text-white overflow-hidden"
         style={{
-          backgroundImage: "url(/playbook-hero.png)",
+          backgroundImage: "url(/playbook-bg.jpg)",
           backgroundSize: "cover",
-          backgroundPosition: "center bottom",
+          backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       >
