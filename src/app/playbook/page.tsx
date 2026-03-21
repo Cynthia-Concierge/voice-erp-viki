@@ -193,9 +193,9 @@ export default function PlaybookPage() {
         />
 
         <div className="relative z-10 px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-10 sm:pb-12 md:pb-16">
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-end gap-8 lg:gap-0">
             {/* Left — Copy */}
-            <div className="flex-1 text-center lg:text-left pt-0 lg:pt-4">
+            <div className="flex-1 text-center lg:text-left pt-0 lg:pt-4 lg:pb-8">
               <span className="inline-block font-[family-name:var(--font-dm-mono)] font-light text-[12px] sm:text-[13px] tracking-[0.2em] text-[#AFE2FF] mb-4">
                 FREE PLAYBOOK
               </span>
@@ -229,8 +229,18 @@ export default function PlaybookPage() {
               </button>
             </div>
 
+            {/* Center — Viki (desktop only, aligned to bottom) */}
+            <div className="hidden lg:block flex-shrink-0 self-end" style={{ width: 300, marginLeft: -20, marginRight: -20 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/viki-playbook.png"
+                alt="Viki holding the 5AM Callout Playbook"
+                className="w-full h-auto object-contain object-bottom drop-shadow-2xl"
+              />
+            </div>
+
             {/* Right — Form */}
-            <div ref={formRef} className="w-full lg:w-[380px] flex-shrink-0">
+            <div ref={formRef} className="w-full lg:w-[380px] flex-shrink-0 lg:pb-8">
               <div className="bg-[#022EAD]/90 backdrop-blur-sm p-6 sm:p-8 border border-white/10">
                 <h2 className="font-display text-[22px] sm:text-[24px] leading-[1.1] text-white mb-2">
                   GET THE FREE PLAYBOOK
