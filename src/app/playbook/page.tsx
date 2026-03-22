@@ -208,10 +208,10 @@ export default function PlaybookPage() {
           }}
         />
 
-        <div className="relative px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-10 sm:pb-12 md:pb-16" style={{ zIndex: 3 }}>
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:justify-between">
+        <div className="relative px-4 sm:px-6 pt-8 sm:pt-10 md:pt-16 pb-0 sm:pb-0 md:pb-0" style={{ zIndex: 3 }}>
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-end gap-8 lg:gap-0 lg:justify-between">
             {/* Left — Copy */}
-            <div className="flex-1 text-center lg:text-left pt-0 lg:pt-4 lg:max-w-[48%]">
+            <div className="flex-1 text-center lg:text-left pt-0 lg:pt-4 lg:pb-12 lg:max-w-[42%]">
               <span className="inline-block font-[family-name:var(--font-dm-mono)] font-light text-[12px] sm:text-[13px] tracking-[0.2em] text-[#AFE2FF] mb-4">
                 FREE PLAYBOOK
               </span>
@@ -245,8 +245,21 @@ export default function PlaybookPage() {
               </button>
             </div>
 
+            {/* Center — Viki character */}
+            <div className="hidden lg:flex items-end justify-center flex-shrink-0 -mb-0 pointer-events-none select-none" style={{ width: '220px' }}>
+              <Image
+                src="/viki-hero.png"
+                alt="Viki — your AI dispatch assistant"
+                width={280}
+                height={400}
+                className="object-contain drop-shadow-2xl"
+                style={{ maxHeight: '420px' }}
+                priority
+              />
+            </div>
+
             {/* Right — Form (z-index above Viki so it stays clickable) */}
-            <div ref={formRef} className="w-full lg:w-[380px] flex-shrink-0">
+            <div ref={formRef} className="w-full lg:w-[380px] flex-shrink-0 lg:pb-12">
               <div className="bg-[#022EAD]/90 backdrop-blur-sm p-6 sm:p-8 border border-white/10">
                 <h2 className="font-display text-[22px] sm:text-[24px] leading-[1.1] text-white mb-2">
                   GET THE FREE PLAYBOOK
