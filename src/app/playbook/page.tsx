@@ -245,20 +245,7 @@ export default function PlaybookPage() {
               </button>
             </div>
 
-            {/* Center — Viki character (full-body) */}
-            <div className="hidden lg:flex items-end justify-center flex-shrink-0 pointer-events-none select-none" style={{ width: '420px' }}>
-              <Image
-                src="/viki-hero.png"
-                alt="Viki — your AI dispatch assistant"
-                width={800}
-                height={1360}
-                className="object-contain drop-shadow-2xl"
-                style={{ maxHeight: '1040px' }}
-                priority
-              />
-            </div>
-
-            {/* Right — Form (z-index above Viki so it stays clickable) */}
+            {/* Right — Form */}
             <div ref={formRef} className="w-full lg:w-[380px] flex-shrink-0 lg:pb-12">
               <div className="bg-[#022EAD]/90 backdrop-blur-sm p-6 sm:p-8 border border-white/10">
                 <h2 className="font-display text-[22px] sm:text-[24px] leading-[1.1] text-white mb-2">
