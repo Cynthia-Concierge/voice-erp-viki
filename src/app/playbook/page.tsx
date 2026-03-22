@@ -245,15 +245,15 @@ export default function PlaybookPage() {
               </button>
             </div>
 
-            {/* Center — Viki character */}
-            <div className="hidden lg:flex items-end justify-center flex-shrink-0 -mb-0 pointer-events-none select-none" style={{ width: '220px' }}>
+            {/* Center — Viki character (full-body) */}
+            <div className="hidden lg:flex items-end justify-center flex-shrink-0 pointer-events-none select-none" style={{ width: '240px' }}>
               <Image
                 src="/viki-hero.png"
                 alt="Viki — your AI dispatch assistant"
-                width={280}
-                height={400}
+                width={400}
+                height={680}
                 className="object-contain drop-shadow-2xl"
-                style={{ maxHeight: '420px' }}
+                style={{ maxHeight: '520px' }}
                 priority
               />
             </div>
