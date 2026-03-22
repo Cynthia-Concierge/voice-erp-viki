@@ -440,10 +440,23 @@ export default function CalculatorPage() {
           <h1 className="font-display text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] leading-[1.05] mb-4 text-white">
             SEE EXACTLY WHAT MANUAL DISPATCH IS COSTING YOUR DSP
           </h1>
-          <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[25px] sm:leading-[27px] text-white/80 max-w-xl mx-auto">
+          <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[25px] sm:leading-[27px] text-white/80 max-w-xl mx-auto mb-8 sm:mb-10">
             Answer 3 questions. Get your annual cost number instantly &mdash; then
             unlock a personalized action plan to cut it.
           </p>
+        </div>
+
+        {/* Hero Image — Viki in neighborhood */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <div className="max-w-5xl mb-0 -mx-4 sm:mx-auto">
+          <img
+            src="/hero-scene@2x.png"
+            srcSet="/hero-scene.png 800w, /hero-scene@2x.png 1600w"
+            sizes="(max-width: 640px) 100vw, 1024px"
+            alt="Viki - AI Dispatcher in neighborhood"
+            className="w-full h-auto"
+            fetchPriority="high"
+          />
         </div>
       </section>
 
