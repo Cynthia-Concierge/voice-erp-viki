@@ -20,7 +20,6 @@ async function addToApollo(firstName: string, lastName: string, emailAddr: strin
   if (!apiKey) return;
 
   try {
-    // 1. Create or find the contact in Apollo
     const createRes = await fetch("https://api.apollo.io/v1/contacts", {
       method: "POST",
       headers: { "Content-Type": "application/json", "X-Api-Key": apiKey },
@@ -42,7 +41,6 @@ async function addToApollo(firstName: string, lastName: string, emailAddr: strin
     const contactId = created.contact?.id;
     if (!contactId) return;
 
-    // 2. Add the contact to the sequence
     const seqRes = await fetch(
       `https://api.apollo.io/v1/emailer_campaigns/${APOLLO_SEQUENCE_ID}/add_contact_ids`,
       {
@@ -64,6 +62,105 @@ async function addToApollo(firstName: string, lastName: string, emailAddr: strin
   }
 }
 
+async function createGHLContact(
+  pit: string,
+  locId: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  phone: string,
+  source: string,
+  tags: string[]
+): Promise<{ ok: boolean; id?: string; error?: string }> {
+  const payload = {
+    locationId: locId,
+    firstName,
+    lastName,
+    email,
+    phone,
+    source,
+    tags,
+  };
+
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = await fetch("https://services.leadconnectorhq.com/contacts/", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${pit}`,
+          "Content-Type": "application/json",
+          Version: "2021-07-28",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        return { ok: true, id: data.contact?.id };
+      }
+
+      const body = await res.text();
+      console.error(`GHL attempt ${attempt + 1} failed:`, res.status, body);
+
+      // If 409 conflict (duplicate), try upsert lookup
+      if (res.status === 409) {
+        try {
+          const searchRes = await fetch(
+            `https://services.leadconnectorhq.com/contacts/search/duplicate?locationId=${locId}&email=${encodeURIComponent(email)}`,
+            {
+              headers: {
+                Authorization: `Bearer ${pit}`,
+                Version: "2021-07-28",
+              },
+            }
+          );
+          if (searchRes.ok) {
+            const searchData = await searchRes.json();
+            const existingId = searchData.contact?.id;
+            if (existingId) {
+              // Update the existing contact with new tags
+              await fetch(`https://services.leadconnectorhq.com/contacts/${existingId}`, {
+                method: "PUT",
+                headers: {
+                  Authorization: `Bearer ${pit}`,
+                  "Content-Type": "application/json",
+                  Version: "2021-07-28",
+                },
+                body: JSON.stringify({ tags, source }),
+              });
+              return { ok: true, id: existingId };
+            }
+          }
+        } catch {
+          // Fall through
+        }
+      }
+
+      // Don't retry on 400/401/422 — those won't fix themselves
+      if (res.status === 400 || res.status === 401 || res.status === 422) {
+        return { ok: false, error: `GHL error ${res.status}: ${body.slice(0, 200)}` };
+      }
+
+      // Retry on 500/502/503/429
+      if (attempt === 0 && (res.status >= 500 || res.status === 429)) {
+        await new Promise((r) => setTimeout(r, 1000));
+        continue;
+      }
+
+      return { ok: false, error: `GHL error ${res.status}` };
+    } catch (err) {
+      console.error(`GHL attempt ${attempt + 1} network error:`, err);
+      if (attempt === 0) {
+        await new Promise((r) => setTimeout(r, 1000));
+        continue;
+      }
+      return { ok: false, error: "GHL network error" };
+    }
+  }
+
+  return { ok: false, error: "GHL failed after retries" };
+}
+
 export async function POST(req: NextRequest) {
   const { name, email, phone, source, tags } = await req.json();
 
@@ -79,7 +176,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid US phone number" }, { status: 400 });
   }
 
-  // Normalize to +1XXXXXXXXXX
   const rawDigits = phone.replace(/\D/g, "");
   const cleanPhone = rawDigits.length === 11 && rawDigits[0] === "1"
     ? `+${rawDigits}`
@@ -89,6 +185,7 @@ export async function POST(req: NextRequest) {
   const locId = process.env.GHL_LOCATION_ID;
 
   if (!pit || !locId) {
+    console.error("Missing GHL env vars — GHL_PIT:", !!pit, "GHL_LOCATION_ID:", !!locId);
     return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
   }
 
@@ -96,38 +193,24 @@ export async function POST(req: NextRequest) {
   const lastName = rest.join(" ") || "";
   const cleanEmail = email.trim().toLowerCase();
 
-  // Allow callers to specify source & tags for different funnels
   const leadSource = source?.trim() || "VoiceERP Landing Page";
   const leadTags = tags?.length ? tags : ["ad-funnel"];
 
-  // Send to GHL + Apollo in parallel
-  const [ghlRes] = await Promise.all([
-    fetch("https://services.leadconnectorhq.com/contacts/", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${pit}`,
-        "Content-Type": "application/json",
-        Version: "2021-07-28",
-      },
-      body: JSON.stringify({
-        locationId: locId,
-        firstName,
-        lastName,
-        email: cleanEmail,
-        phone: cleanPhone,
-        source: leadSource,
-        tags: leadTags,
-      }),
-    }),
+  // Send to GHL + Apollo in parallel — GHL is critical, Apollo is best-effort
+  const [ghlResult] = await Promise.all([
+    createGHLContact(pit, locId, firstName, lastName, cleanEmail, cleanPhone, leadSource, leadTags),
     addToApollo(firstName, lastName, cleanEmail, cleanPhone),
   ]);
 
-  if (!ghlRes.ok) {
-    const body = await ghlRes.text();
-    console.error("GHL create contact failed:", ghlRes.status, body);
-    return NextResponse.json({ error: "Failed to create contact" }, { status: 502 });
+  if (!ghlResult.ok) {
+    console.error("GHL create failed:", ghlResult.error);
+    // Still return 200 so the user can proceed — lead data is in the request logs
+    // and we don't want to block the user experience
+    return NextResponse.json({
+      id: null,
+      warning: "Lead saved but CRM sync pending",
+    });
   }
 
-  const data = await ghlRes.json();
-  return NextResponse.json({ id: data.contact?.id });
+  return NextResponse.json({ id: ghlResult.id });
 }
