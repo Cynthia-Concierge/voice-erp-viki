@@ -21,8 +21,19 @@ export default function SchedulePage() {
     }
 
     function onCalendlyEvent(e: MessageEvent) {
-      if (e.data?.event === "calendly.event_scheduled") {
-        // Meta Pixel — Schedule event
+      // Calendly sends postMessage in multiple formats depending on widget version
+      let eventName = "";
+      if (typeof e.data === "object" && e.data !== null) {
+        eventName = e.data.event || "";
+      } else if (typeof e.data === "string") {
+        try {
+          const parsed = JSON.parse(e.data);
+          eventName = parsed.event || "";
+        } catch {
+          // not JSON
+        }
+      }
+      if (eventName === "calendly.event_scheduled") {
         if (typeof window !== "undefined" && (window as any).fbq) {
           (window as any).fbq("track", "Schedule");
         }
@@ -37,7 +48,7 @@ export default function SchedulePage() {
     <main className="min-h-screen bg-[#0039D7] flex flex-col">
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
 
       {/* Nav */}

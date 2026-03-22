@@ -23,7 +23,18 @@ export default function PlaybookThankYouPage() {
     }
 
     function onCalendlyEvent(e: MessageEvent) {
-      if (e.data?.event === "calendly.event_scheduled") {
+      let eventName = "";
+      if (typeof e.data === "object" && e.data !== null) {
+        eventName = e.data.event || "";
+      } else if (typeof e.data === "string") {
+        try {
+          const parsed = JSON.parse(e.data);
+          eventName = parsed.event || "";
+        } catch {
+          // not JSON
+        }
+      }
+      if (eventName === "calendly.event_scheduled") {
         if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
           (window as unknown as Record<string, (...args: unknown[]) => void>).fbq("track", "Schedule", {
             content_name: "Playbook to Demo",
@@ -49,7 +60,7 @@ export default function PlaybookThankYouPage() {
     <main className="min-h-screen bg-[#0039D7] flex flex-col">
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
 
       {/* Nav */}
