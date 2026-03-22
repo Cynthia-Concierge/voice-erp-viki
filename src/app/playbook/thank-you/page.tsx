@@ -50,6 +50,9 @@ export default function PlaybookThankYouPage() {
   // Build Calendly URL with prefill if we have lead data
   const calendlyBase = "https://calendly.com/sammy-voiceerp/intro-with-sam";
   const calendlyParams = new URLSearchParams();
+  calendlyParams.set("hide_event_type_details", "1");
+  calendlyParams.set("hide_gdpr_banner", "1");
+  calendlyParams.set("primary_color", "0039D7");
   if (leadName) calendlyParams.set("name", leadName);
   if (leadEmail) calendlyParams.set("email", leadEmail);
   const calendlyUrl = calendlyParams.toString()

@@ -80,7 +80,7 @@ export default function SchedulePage() {
           {/* Calendly Inline Widget */}
           <div
             className="calendly-inline-widget bg-white rounded-sm overflow-hidden shadow-2xl"
-            data-url="https://calendly.com/sammy-voiceerp/intro-with-sam"
+            data-url="https://calendly.com/sammy-voiceerp/intro-with-sam?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=0039D7"
             style={{ minWidth: 320, height: 700 }}
           />
         </div>
