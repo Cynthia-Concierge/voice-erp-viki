@@ -70,11 +70,15 @@ export default function SchedulePage() {
       <section className="flex-1 flex items-center justify-center px-4 sm:px-6 py-10 sm:py-16">
         <div className="max-w-2xl w-full text-center text-white">
           <h1 className="font-display text-[28px] md:text-[42px] leading-[1.05] mb-4">
-            {leadName ? `THANKS, ${leadName.toUpperCase()}!` : "THANK YOU!"}
+            {leadName ? `ONE MORE STEP, ${leadName.toUpperCase()}` : "ONE MORE STEP"}
           </h1>
-          <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[27px] mb-8 sm:mb-10 text-white/90">
-            You&apos;re one step away from putting your DSP on autopilot.
-            Schedule a quick call with our team below.
+          <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[27px] mb-3 text-white/90">
+            Your numbers are ready. Book a 15-minute call and we&apos;ll walk you
+            through your full cost breakdown, personalized recommendations,
+            and 90-day savings roadmap.
+          </p>
+          <p className="text-[14px] leading-[22px] mb-8 sm:mb-10 text-white/60">
+            No pitch &mdash; just your numbers, explained by someone who runs DSPs.
           </p>
 
           {/* Calendly Inline Widget */}
