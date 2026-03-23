@@ -163,7 +163,7 @@ export default function PlaybookPage() {
       return;
     }
 
-    router.push("/playbook/thank-you");
+    router.push("/schedule");
   }
 
   return (
@@ -226,8 +226,8 @@ export default function PlaybookPage() {
                 {[
                   "The real cost of callouts (it\u2019s not just time)",
                   "3 systems top DSPs use for automated coverage",
-                  "Build a backup roster that self-activates",
-                  "Callout escalation flowchart template",
+                  "Ready-to-use backup roster and compatibility templates",
+                  "How AI dispatch can replace all of this — automatically",
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <Check />
@@ -241,7 +241,7 @@ export default function PlaybookPage() {
                 onClick={scrollToForm}
                 className="btn-pop lg:hidden inline-block bg-white text-[#0039D7] font-semibold text-[15px] px-8 py-3 rounded-none"
               >
-                Get the Free Playbook
+                Get the Playbook & Book a Call
               </button>
             </div>
 
@@ -249,11 +249,12 @@ export default function PlaybookPage() {
             <div ref={formRef} className="w-full lg:w-[380px] flex-shrink-0 lg:pb-12">
               <div className="bg-[#022EAD]/90 backdrop-blur-sm p-6 sm:p-8 border border-white/10">
                 <h2 className="font-display text-[22px] sm:text-[24px] leading-[1.1] text-white mb-2">
-                  GET THE FREE PLAYBOOK
+                  GET THE PLAYBOOK + A FREE CALL
                 </h2>
                 <p className="text-white/70 text-[14px] mb-6">
-                  Enter your info and we&apos;ll send the 5AM Callout Playbook
-                  straight to your inbox.
+                  Enter your info to get the playbook and book a 15-minute
+                  call where we&apos;ll walk you through exactly how to
+                  implement it for your DSP.
                 </p>
 
                 {error && (
@@ -312,10 +313,10 @@ export default function PlaybookPage() {
                     disabled={submitting}
                     className="btn-pop w-full bg-white text-[#0039D7] font-semibold text-[16px] px-8 py-3.5 rounded-none hover:bg-gray-100 transition-colors disabled:opacity-60"
                   >
-                    {submitting ? "Sending..." : "Send Me the Playbook"}
+                    {submitting ? "Sending..." : "Get the Playbook & Book My Call"}
                   </button>
                   <p className="text-white/50 text-[12px] text-center">
-                    No spam. Just the playbook. Unsubscribe anytime.
+                    15 minutes. No pitch. Just your callout fix, explained.
                   </p>
                 </form>
               </div>
@@ -421,7 +422,7 @@ export default function PlaybookPage() {
             onClick={scrollToForm}
             className="btn-pop inline-block bg-white text-[#0039D7] font-semibold text-[15px] sm:text-[16px] px-6 sm:px-8 py-3 rounded-none"
           >
-            Get the Free Playbook
+            Get the Playbook & Book a Call
           </button>
         </div>
       </section>
@@ -466,7 +467,7 @@ export default function PlaybookPage() {
             onClick={scrollToForm}
             className="btn-pop inline-block bg-white text-[#0039D7] font-semibold text-[15px] sm:text-[16px] px-8 py-3 rounded-none mb-8 sm:mb-12"
           >
-            Send Me the Playbook
+            Get My Playbook & Book a Call
           </button>
 
           {/* Animated audio waveform */}
