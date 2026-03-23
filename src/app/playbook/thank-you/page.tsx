@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
+import { trackSchedule } from "@/lib/pixel";
 
 export default function PlaybookThankYouPage() {
   const [leadName, setLeadName] = useState("");
@@ -35,12 +36,9 @@ export default function PlaybookThankYouPage() {
         }
       }
       if (eventName === "calendly.event_scheduled") {
-        if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
-          (window as unknown as Record<string, (...args: unknown[]) => void>).fbq("track", "Schedule", {
-            content_name: "Playbook to Demo",
-          });
-        }
-        router.push("/thank-you");
+        trackSchedule({ content_name: "Playbook to Demo" }).then(() => {
+          router.push("/thank-you");
+        });
       }
     }
     window.addEventListener("message", onCalendlyEvent);

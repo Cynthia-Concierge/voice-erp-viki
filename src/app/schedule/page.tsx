@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
+import { trackSchedule } from "@/lib/pixel";
 
 export default function SchedulePage() {
   const [leadName, setLeadName] = useState("");
@@ -34,10 +35,9 @@ export default function SchedulePage() {
         }
       }
       if (eventName === "calendly.event_scheduled") {
-        if (typeof window !== "undefined" && (window as any).fbq) {
-          (window as any).fbq("track", "Schedule");
-        }
-        router.push("/thank-you");
+        trackSchedule({ content_name: "Calendly Booking" }).then(() => {
+          router.push("/thank-you");
+        });
       }
     }
     window.addEventListener("message", onCalendlyEvent);

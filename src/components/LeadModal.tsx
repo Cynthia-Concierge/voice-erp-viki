@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { trackLead } from "@/lib/pixel";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -74,10 +75,8 @@ export default function LeadModal({ onClose }: { onClose: () => void }) {
       JSON.stringify({ name, email, phone: cleanPhone, ts: Date.now() })
     );
 
-    // Meta Pixel — Lead event
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "Lead");
-    }
+    // Meta Pixel — Lead event (await ensures beacon sends before navigation)
+    await trackLead({ content_name: "VoiceERP Landing Page" });
 
     try {
       const res = await fetch("/api/leads", {

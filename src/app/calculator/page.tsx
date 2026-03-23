@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { trackLead } from "@/lib/pixel";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -261,13 +262,11 @@ export default function CalculatorPage() {
       JSON.stringify({ name, email, phone: cleanPhone, drivers, routes, method, savings: results, ts: Date.now() })
     );
 
-    if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
-      (window as unknown as Record<string, (...args: unknown[]) => void>).fbq("track", "Lead", {
-        content_name: "DSP Savings Calculator",
-        value: results?.totalCostPerYear,
-        currency: "USD",
-      });
-    }
+    await trackLead({
+      content_name: "DSP Savings Calculator",
+      value: results?.totalCostPerYear,
+      currency: "USD",
+    });
 
     try {
       const res = await fetch("/api/leads", {

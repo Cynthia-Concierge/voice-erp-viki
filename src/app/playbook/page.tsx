@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { trackLead } from "@/lib/pixel";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -127,12 +128,8 @@ export default function PlaybookPage() {
       JSON.stringify({ name, email, phone: cleanPhone, driverCount, ts: Date.now() })
     );
 
-    // Meta Pixel — Lead event
-    if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
-      (window as unknown as Record<string, (...args: unknown[]) => void>).fbq("track", "Lead", {
-        content_name: "5AM Callout Playbook",
-      });
-    }
+    // Meta Pixel — Lead event (await ensures beacon sends before navigation)
+    await trackLead({ content_name: "5AM Callout Playbook" });
 
     // Send to GHL with playbook-specific source & tags
     const leadTags = ["playbook-lead", "5am-callout"];
